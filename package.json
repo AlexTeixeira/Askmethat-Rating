@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "arr-flatten": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^3.0.0",
+    "gulp-typescript": "^3.1.4",
+    "gulp-uglify": "^2.0.0",
+    "merge": "^1.2.0",
+    "typescript": "^2.1.4"
+  }
+}
