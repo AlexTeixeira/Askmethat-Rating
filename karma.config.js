@@ -10,6 +10,6 @@ module.exports = function(config) {
             "**/*.ts": ["karma-typescript"], // *.tsx for React Jsx 
         },
         reporters: ["progress", "karma-typescript"],
-        browsers: ["Safari"]
+        browsers: ["Chrome"]
     });
 };
