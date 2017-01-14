@@ -8,10 +8,11 @@ before_script:
   - npm install -g bower
   - npm install -g gulp
   - npm install -g tsd
+  - npm install -g typescript
   - npm install -g gulp-typescript
   - npm install -g gulp-sass
   - npm install -g mocha
-  - npm install -g karma,
+  - npm install -g karma
   - npm install -g karma-chrome-launcher
   - npm install -g karma-mocha
   - npm install -g karma-typescript
