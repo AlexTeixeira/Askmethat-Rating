@@ -1,5 +1,5 @@
 module.exports = function(config) {
-    config.set({
+    var configuration = {
         browserNoActivityTimeout: 30000,
         frameworks: ["mocha", "karma-typescript"],
         files: [
@@ -9,7 +9,19 @@ module.exports = function(config) {
         preprocessors: {
             "**/*.ts": ["karma-typescript"], // *.tsx for React Jsx 
         },
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
         reporters: ["progress", "karma-typescript"],
         browsers: ["Chrome"]
-    });
+    };
+
+    if (process.env.TRAVIS) {
+        configuration.browsers = ['Chrome_travis_ci'];
+    }
+
+    config.set(configuration);
 };
