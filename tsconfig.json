@@ -5,8 +5,13 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-		"outFile": "js/powerfull-rating.js"
+        "module": "amd",
+		"outFile": "js/powerfull-rating.js",
+        "types" : [
+            "mocha"
+        ]
 	},
+    
     "include": [
         "src/ts/*.ts"
     ]

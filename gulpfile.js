@@ -6,6 +6,10 @@ var uglify = require('gulp-uglify');
 var minify = require('gulp-minify-css');
 var fs = require("fs");
 
+var Server = require('karma').Server;
+var isTravis = process.env.TRAVIS || false;
+var pathToKarmaConf = __dirname.replace('/gulp', '');
+
 var paths = {
     npm: 'node_modules/',
     tsSource: 'src/ts/*.ts',
@@ -50,5 +54,12 @@ gulp.task('minifycss', function(){
    .pipe(gulp.dest('dist/css/'));
 });
 
+gulp.task('unit-test', function(done){
+      console.log(isTravis)
+    new Server({
+      configFile: require('path').resolve('karma.config.js'),
+      singleRun: true
+    }, done).start();
+});
 
-gulp.task('default', ['ts-compile', 'sass','minifyjs','minifycss']);
+gulp.task('default', ['ts-compile', 'sass','minifyjs','minifycss','unit-test']);

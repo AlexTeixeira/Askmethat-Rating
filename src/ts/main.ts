@@ -1,11 +1,7 @@
-class Greeter {
-    greeting: string;
-    constructor(message: string) {
-        this.greeting = message;
-    }
+export default class Greeter {
     greet() {
-        return "Hello, " + this.greeting;
+        return "Hello";
     }
 }
 
-var greeter = new Greeter(" Twitter");
+var greeter = new Greeter();
