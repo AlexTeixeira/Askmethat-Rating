@@ -2,6 +2,12 @@ module.exports = function(config) {
     var configuration = {
         browserNoActivityTimeout: 30000,
         frameworks: ["mocha", "karma-typescript"],
+        plugins : [
+            "karma-typescript",
+            "karma-mocha",
+            "karma-coverage",
+            "karma-chrome-launcher"
+        ],
         files: [
             { pattern: "src/**/*.ts" },
             { pattern: "test/*.ts" }
@@ -15,11 +21,11 @@ module.exports = function(config) {
                 flags: ['--no-sandbox']
             }
         },
-        reporters: ["progress", "karma-typescript"],
+        reporters: ["progress", "karma-typescript", "coverage"],
         browsers: ["Chrome"],
         coverageReporter: {
             type : 'lcov',
-            dir : 'coverage/'
+            dir : 'coverage'
         }   
     };
 

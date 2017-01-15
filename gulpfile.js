@@ -65,9 +65,13 @@ gulp.task('unit-test', function(done){
 });
 
 
-gulp.task('coveralls', function () {
-gulp.src('coverage/**/lcov.info')
-  .pipe(coveralls());
+gulp.task('coveralls', ['unit-test'], function () {
+    // If not running on a CI environment it won't send lcov.info to coveralls
+    if (!process.env.CI) {
+        return;
+    }
+
+    gulp.src('coverage/**/lcov.info').pipe(coveralls());
 });
 
 gulp.task('default', ['ts-compile', 'sass','minifyjs','minifycss','unit-test']);

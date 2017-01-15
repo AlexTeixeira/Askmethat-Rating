@@ -24,5 +24,4 @@ before_script:
   - npm install -g karma-typescript-preprocessor
   - gulp ts-compile
   - gulp sass
-  - gulp unit-test
   - gulp coveralls
