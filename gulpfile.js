@@ -4,6 +4,8 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minify = require('gulp-minify-css');
+var coveralls = require('gulp-coveralls');
+
 var fs = require("fs");
 
 var Server = require('karma').Server;
@@ -60,6 +62,12 @@ gulp.task('unit-test', function(done){
       configFile: require('path').resolve('karma.config.js'),
       singleRun: true
     }, done).start();
+});
+
+
+gulp.task('coveralls', function () {
+gulp.src('coverage/**/lcov.info')
+  .pipe(coveralls());
 });
 
 gulp.task('default', ['ts-compile', 'sass','minifyjs','minifycss','unit-test']);

@@ -15,6 +15,7 @@ before_script:
   - npm install -g typescript
   - npm install -g gulp-typescript
   - npm install -g gulp-sass
+  - npm install -g gulp-coveralls
   - npm install -g mocha
   - npm install -g karma
   - npm install -g karma-chrome-launcher
@@ -24,3 +25,4 @@ before_script:
   - gulp ts-compile
   - gulp sass
   - gulp unit-test
+  - gulp coveralls

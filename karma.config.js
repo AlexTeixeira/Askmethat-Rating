@@ -16,7 +16,11 @@ module.exports = function(config) {
             }
         },
         reporters: ["progress", "karma-typescript"],
-        browsers: ["Chrome"]
+        browsers: ["Chrome"],
+        coverageReporter: {
+            type : 'lcov',
+            dir : 'coverage/'
+        }   
     };
 
     if (process.env.TRAVIS) {
