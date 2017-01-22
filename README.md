@@ -1,12 +1,12 @@
 # askmethat-rating
 
 master:
-[![Build Status](https://travis-ci.org/AlexTeixeira/powerful-rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/powerful-rating.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/powerful-rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/powerful-rating?branch=master)
+[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Ratingbranch=master)
 
 develop:
-[![Build Status](https://travis-ci.org/AlexTeixeira/powerful-rating.svg?branch=develop)](https://travis-ci.org/AlexTeixeira/powerful-rating.svg?branch=develop)
-[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/powerful-rating/badge.svg?branch=develop)](https://coveralls.io/github/AlexTeixeira/powerful-rating?branch=develop)
+[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Ratings.vg?branch=develop)](https://travis-ci.org/AlexTeixeira/powerful-rating.svg?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=develop)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=develop)
 
 
 ### Synopsis
