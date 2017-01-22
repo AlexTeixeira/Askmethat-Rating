@@ -1,19 +1,13 @@
 module.exports = function(config) {
     var configuration = {
         browserNoActivityTimeout: 30000,
-        frameworks: ["mocha", "karma-typescript"],
-        plugins : [
-            "karma-typescript",
-            "karma-mocha",
-            "karma-coverage",
-            "karma-chrome-launcher"
-        ],
+        frameworks: ["mocha", "karma-typescript", "chai"],
         files: [
             { pattern: "src/**/*.ts" },
             { pattern: "test/*.ts" }
         ],
         preprocessors: {
-            "**/*.ts": ["karma-typescript"], // *.tsx for React Jsx 
+            "**/*.ts": ["karma-typescript"], 
         },
         customLaunchers: {
             Chrome_travis_ci: {

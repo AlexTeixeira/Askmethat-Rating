@@ -22,6 +22,7 @@ before_script:
   - npm install -g karma-mocha
   - npm install -g karma-typescript
   - npm install -g karma-typescript-preprocessor
+  - npm install -g chai
   - gulp ts-compile
   - gulp sass
   - gulp coveralls

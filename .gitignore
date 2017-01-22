@@ -38,3 +38,9 @@ jspm_packages
 
 # coveralls
 coverage
+
+# samples of code
+samples
+
+#dist files, not needed in repository can be build with gulp
+dist

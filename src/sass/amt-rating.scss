@@ -1,0 +1,17 @@
+.amt-rating-elem{
+    cursor: pointer;
+
+    &.amt-rating-half {
+        position:relative;
+        line-height: normal;
+
+        &:after{
+            content:'';
+            position:absolute;
+            z-index:1;
+            height: 110%;
+            left: -1%;
+        }
+    }
+}
+
