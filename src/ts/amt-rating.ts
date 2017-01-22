@@ -115,19 +115,7 @@ export class AskmethatRating {
     private onMouseEnter(event?: Event) : void{
         var current = <HTMLSpanElement>event.srcElement;
         var value = parseInt(current.getAttribute("data-rating"),10);
-
-        for(let i = this._defaultOptions.minRating; i <= this._defaultOptions.maxRating; i++){
-            var span = <HTMLSpanElement> this._parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
-            //all span before minRating should be direclty active
-            if(i <= value){
-                span.className += " amt-active";
-                span.style.color = this._defaultOptions.hoverColor;
-            } else {
-                span.classList.remove("amt-active");
-                span.style.color = this._defaultOptions.backgroundColor;
-            }
-        }
-
+        this.setOrUnsetActive(current, value);
     }
 
 
@@ -137,12 +125,21 @@ export class AskmethatRating {
     */
     private onMouseOut(event?: Event): void{
         var current = <HTMLElement>event.srcElement;
+        this.setOrUnsetActive(current, this.value);
+    }
+    
+    /**
+    * @function set or unset the active class and color
+    * @param  {HTMLSpanElement} current :  current span element
+    * @param  {number} current :  value needed for the if
+    */
+    private setOrUnsetActive(current : HTMLSpanElement, value: number){
         //delete hover color only if amt-selected is not present into the current span
         if(!current.classList.contains("amt-selected") ){
             for(let i = this._defaultOptions.minRating; i <= this._defaultOptions.maxRating; i++){
                 var span = <HTMLSpanElement> this._parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
                 //all span before minRating should be direclty active
-                if (i > this.value) {
+                if (i > value) {
                     span.style.color = this._defaultOptions.backgroundColor;
                     span.classList.remove("amt-active");
                 } else{
@@ -153,7 +150,7 @@ export class AskmethatRating {
         }
 
     }
-    
+
     /**
     * @function static method to retrieve with identifier the value 
     * @param  {string} identifier: string container identifier

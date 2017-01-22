@@ -130,3 +130,47 @@ describe('#display', () => {
      });
 
   });
+
+
+    describe('#events', () => {
+
+      it("Trigger a click in a specific rating element", () => {
+        let val = 2;
+        var span = <HTMLSpanElement> div.children[val];
+        span.click();
+
+        expect(subject.value).to.be.equal(val+1);
+
+     });
+
+    it("Trigger a mouseenter in specific rating element", () => {
+        let val = 3;
+        var span = <HTMLSpanElement> div.children[val];
+
+        var event;
+        event = document.createEvent('MouseEvents');
+        event.initMouseEvent('mouseenter', true, true, window);
+        span.dispatchEvent(event);
+
+        expect(span.classList.contains("amt-active")).to.be.true;
+
+     });
+
+     it("Trigger a mouseout in specific rating element", () => {
+        let val = 3;
+        var span = <HTMLSpanElement> div.children[val];
+
+        var event;
+        event = document.createEvent('MouseEvents');
+        event.initMouseEvent('mouseenter', true, true, window);
+        span.dispatchEvent(event);
+
+        event.initMouseEvent('mouseout', true, true, window);
+        span.dispatchEvent(event);
+
+        expect(span.classList.contains("amt-active")).to.be.false;
+
+     });
+
+
+  });
