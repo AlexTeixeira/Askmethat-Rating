@@ -4,12 +4,7 @@
 		"noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "sourceMap": true,
-        "module": "amd",
-		"outFile": "js/powerfull-rating.js",
-        "types" : [
-            "mocha"
-        ]
+        "sourceMap": true
 	},
     
     "include": [

@@ -3,6 +3,7 @@ node_js:
   - "6.9"
 branches:
   only:
+    - develop
     - master
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -22,6 +23,7 @@ before_script:
   - npm install -g karma-mocha
   - npm install -g karma-typescript
   - npm install -g karma-typescript-preprocessor
+  - npm install -g chai
   - gulp ts-compile
   - gulp sass
   - gulp coveralls
