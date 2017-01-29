@@ -13,6 +13,7 @@ export class AskmethatRating {
     private _parentElement: HTMLDivElement;
     private _value : number;
     private _styleSheet : any;
+    private _changeEvent: CustomEvent;
 
     get value():number {
         return this._value;
@@ -58,6 +59,8 @@ export class AskmethatRating {
         }
 
         this.render(defaultValue);
+
+        
 
     }
 
@@ -107,11 +110,8 @@ export class AskmethatRating {
                 //define events
                 spanOuter.addEventListener("click",(e) => this.onRatingClick(e));
                 spanOuter.addEventListener("mousemove",(e) => this.onMouseMove(e));
-                //spanUnder.addEventListener("mouseleave",(e) => this.onMouseOut(e));
             }
             
-
-
             spanOuter.appendChild(spanUnder);
             this._parentElement.appendChild(spanOuter);
 
@@ -136,9 +136,11 @@ export class AskmethatRating {
         //delete current selected
         this._parentElement.querySelector(".amt-selected").classList.remove("amt-selected");
       
-        span.className += " amt-selected";
-        
+        span.className += " amt-selected";       
 
+        this._changeEvent = new CustomEvent("amt-change", { 'detail' : this.value})
+        this._changeEvent.initEvent("amt-change", false, true);
+        this._parentElement.dispatchEvent(this._changeEvent);
     }
 
     /**
