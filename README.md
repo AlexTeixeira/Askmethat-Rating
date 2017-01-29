@@ -9,7 +9,7 @@ develop:
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=develop)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=develop)
 
 
-### Synopsis
+## Synopsis
 
 This plugins was made to allow user to create any rating with any font ( like font-awesome or glyphicons).
 
