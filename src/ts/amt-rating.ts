@@ -5,7 +5,15 @@ export interface IAskmethatRatingOptions {
     minRating?: number,
     maxRating?: number,
     fontClass: string,
-    readonly: boolean
+    readonly: boolean,
+    step: AskmethatRatingSteps
+}
+
+//This enum set the step for the rating
+enum AskmethatRatingSteps{
+    DecimalStep, //0.1 step
+    HalfStep, //0.5 step
+    OnePerOneStep //1 step
 }
 
 export class AskmethatRating {
@@ -34,7 +42,8 @@ export class AskmethatRating {
         minRating: 1,
         maxRating: 5,
         fontClass: "fa fa-star",
-        readonly: false
+        readonly: false,
+        step: AskmethatRatingSteps.DecimalStep
     };
 
     get defaultOptions():IAskmethatRatingOptions {
@@ -144,6 +153,22 @@ export class AskmethatRating {
     }
 
     /**
+    * @function Calculate the value according to the step provided in options
+    * @param  {Number} value:number the current value
+    * @return {Number} the new value according to step
+    */
+    private getValueAccordingToStep(value:number): number{
+        switch(this.defaultOptions.step){
+            case AskmethatRatingSteps.HalfStep:
+                return  Math.round(value * 2) / 2;
+            case AskmethatRatingSteps.OnePerOneStep:
+                return Math.ceil(value);
+            default:
+                return value;
+        }
+    }
+
+    /**
     * @function mouse event enter in rating
     * @param  {type} event?: Event {event}
     */
@@ -152,6 +177,7 @@ export class AskmethatRating {
         var data = Number(current.getAttribute("data-rating"));
         var mousePos =  Number(((event.offsetX /  event.srcElement.clientWidth )* 100).toFixed(0)); 
         var value = (data - 1) + Number((mousePos * 0.01).toFixed(1));
+        value = this.getValueAccordingToStep(value);
 
         if(Number(value)){
             this.setOrUnsetActive(value);

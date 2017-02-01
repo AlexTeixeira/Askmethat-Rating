@@ -24,7 +24,8 @@ beforeEach(function () {
         fontClass: "fa fa-class",
         minRating: 1,
         maxRating: 5,
-        readonly: false
+        readonly: false,
+        
       
       };
 
