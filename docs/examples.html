@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
-  <link rel="stylesheet" title="amtRatingCss" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
@@ -53,6 +53,7 @@
         <!-- First examples !-->
         <div class="col-12">
           <h4 class="second-title">Simple select rating</h4>
+          <p>Simple clickable rating</p>
         </div>
         <div class="card">
           <div class="card-img-top">
@@ -76,7 +77,7 @@
                     };
 
                 var div = document.getElementById("myBasicRating");
-                var amcRating = new AskmethatRating(div, 2, options);              
+                var amtRating = new AskmethatRating(div, 2, options);              
                 </code>
             </pre>
           </div>
@@ -87,6 +88,7 @@
         <!-- Second Example -->
         <div class="col-12">
           <h4 class="second-title">Multiple select rating</h4>
+          <p>Simple multiple independant rating</p>
         </div>
         <div class="card">
           <div class="card-img-top">
@@ -112,9 +114,9 @@
                       };
 
                   var div = document.getElementById("myFirstMultipleRating");
-                  var amcRating1 = new AskmethatRating(div, 1, options);   
+                  var amtRating1 = new AskmethatRating(div, 1, options);   
                   var div = document.getElementById("mySecondMultipleRating");
-                  var amcRating2 = new AskmethatRating(div, 2, options);               
+                  var amtRating2 = new AskmethatRating(div, 2, options);               
                 </code>
             </pre>
           </div>
@@ -126,6 +128,7 @@
         <!-- third Example -->
         <div class="col-12">
           <h4 class="second-title">Different fonts example</h4>
+          <p>Rating using different fonts</p>
         </div>
         <div class="card">
           <div class="card-img-top">
@@ -164,9 +167,9 @@
                       };
 
                   var div = document.getElementById("myFontAwesomeRating");
-                  var amcRating1 = new AskmethatRating(div, 1, options1);   
+                  var amtRating1 = new AskmethatRating(div, 1, options1);   
                   var div = document.getElementById("myOcticonRating");
-                  var amcRating2 = new AskmethatRating(div, 1, options2);               
+                  var amtRating2 = new AskmethatRating(div, 1, options2);               
                 </code>
             </pre>
           </div>
@@ -183,6 +186,7 @@
          <!-- fourth Example -->
         <div class="col-12">
           <h4 class="second-title">Different rating steps</h4>
+          <p>Using the three different step available for rating</p>
         </div>
         <div class="card">
           <div class="card-img-top">
@@ -229,13 +233,13 @@
                   };
 
                   var div = document.getElementById("minimalStepRating");
-                  var amcRating1 = new AskmethatRating(div, 1, decimalOpt);   
+                  var amtRating1 = new AskmethatRating(div, 1, decimalOpt);   
 
                   var div = document.getElementById("halfStepRating");
-                  var amcRating2 = new AskmethatRating(div, 1, halpOpt);    
+                  var amtRating2 = new AskmethatRating(div, 1, halpOpt);    
 
                   var div = document.getElementById("fullStepRating");
-                  var amcRating3 = new AskmethatRating(div, 1, FullOpt);             
+                  var amtRating3 = new AskmethatRating(div, 1, FullOpt);             
                 </code>
             </pre>
           </div>
@@ -248,6 +252,7 @@
         <!-- Fith examples !-->
         <div class="col-12">
           <h4 class="second-title">Readonly rating</h4>
+          <p>Rating at readonly have events disabled</p>
         </div>
         <div class="card">
           <div class="card-img-top">
@@ -271,12 +276,58 @@
                     };
 
                 var div = document.getElementById("readonlyRating");
-                var amcRating = new AskmethatRating(div, 3.2, options);              
+                var amtRating = new AskmethatRating(div, 3.2, options);              
                 </code>
             </pre>
           </div>
           <div class="card-block" style="font-size:2em;">
             <div id="readonlyRating" class="text-center"></div>
+          </div>
+        </div>
+         <div class="row">
+        <div class="col-12">
+          <h1>Working with events</h1>
+          <hr>
+        </div>
+      <!-- sixth examples !-->
+        <div class="col-12">
+          <h4 class="second-title">On change event</h4>
+          <p>Event fired when the value of the rating change</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="changeEventRating"></div>
+                <span id="changeEventRatingValue">2<span>
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                var options = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 1,
+                    maxRating: 5,
+                    readonly: false,
+                    step: AskmethatRatingSteps["OnePerOneStep"]                                       
+                    };
+
+                var changeDiv = document.getElementById("changeEventRating");
+                var amtRating = new AskmethatRating(div, 2, options);
+
+                 changeDiv.addEventListener("amt-change", function(e){
+                  document.getElementById("changeEventRatingValue").innerHTML = e.detail;
+                });        
+                </code>
+            </pre>
+          </div>
+          <div class="card-block text-center" style="font-size:2em;">
+                <div id="changeEventRating"></div>
+                <span id="changeEventRatingValue">2<span>
           </div>
         </div>
       </div>
@@ -310,14 +361,14 @@
 
 
     var div = document.getElementById("myBasicRating");
-    var amcRating = new AskmethatRating(div, 1, options);
+    var amtRating = new AskmethatRating(div, 1, options);
 
 
   //Multiple Example
     var div = document.getElementById("myFirstMultipleRating");
-    var amcRating1 = new AskmethatRating(div, 1, options);   
+    var amtRating1 = new AskmethatRating(div, 1, options);   
     var div = document.getElementById("mySecondMultipleRating");
-    var amcRating2 = new AskmethatRating(div, 2, options);   
+    var amtRating2 = new AskmethatRating(div, 2, options);   
 
 //Fonts example
      var options1 = {
@@ -341,9 +392,9 @@
      };
 
     var div = document.getElementById("myFontAwesomeRating");
-    var amcRating1 = new AskmethatRating(div, 1, options1);   
+    var amtRating1 = new AskmethatRating(div, 1, options1);   
     var div = document.getElementById("myOcticonRating");
-    var amcRating2 = new AskmethatRating(div, 1, options2);      
+    var amtRating2 = new AskmethatRating(div, 1, options2);      
 
     //step example
     var decimalOpt = {
@@ -377,16 +428,16 @@
     };
 
     var div = document.getElementById("minimalStepRating");
-    var amcRating1 = new AskmethatRating(div, 1, decimalOpt);   
+    var amtRating1 = new AskmethatRating(div, 1.8, decimalOpt);   
 
     var div = document.getElementById("halfStepRating");
-    var amcRating2 = new AskmethatRating(div, 1, halpOpt);    
+    var amtRating2 = new AskmethatRating(div, 1.5, halpOpt);    
 
     var div = document.getElementById("fullStepRating");
-    var amcRating3 = new AskmethatRating(div, 1, FullOpt);
+    var amtRating3 = new AskmethatRating(div, 1, FullOpt);
 
 
-    //readonly example
+    //on change example
      var options = {
         backgroundColor : "#e5e500",
         hoverColor: "#ffff66",
@@ -398,7 +449,25 @@
       };
 
       var div = document.getElementById("readonlyRating");
-      var amcRating = new AskmethatRating(div, 3.2, options);    
+      var amtRating = new AskmethatRating(div, 3.2, options);  
+
+
+      var options = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-star",
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: AskmethatRatingSteps["OnePerOneStep"]                                       
+       };
+
+       var changeDiv = document.getElementById("changeEventRating");
+       var amtRating = new AskmethatRating(changeDiv, 2, options);
+
+       changeDiv.addEventListener("amt-change", function(e){
+           document.getElementById("changeEventRatingValue").innerHTML = e.detail;
+       });          
   </script>
 
 </html>

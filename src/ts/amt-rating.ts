@@ -95,20 +95,23 @@ export class AskmethatRating {
             spanUnder.style.width = "0%";
 
             //all span before minRating should be direclty active
-            if (i <= value) {
-                spanOuter.className += " amt-active";
-                spanUnder.style.width = "100%";
-
-                if(value == i){
-                    spanOuter.className += " amt-selected";
+             if (i <= value) {
+                if(!spanOuter.classList.contains("amt-active")){
+                    spanOuter.className += " amt-active";
                 }
-            } else{
-                if(Number(value.toFixed(0)) >= (i - 1) && (value % 1) !== 0 ){
+
+                spanUnder.style.width = "100%";                      
+             } else{
+                if(Number(value.toFixed(1)) >= (i - 1) && Number(value.toFixed(1)) < i && (value % 1) !== 0 ){
+                    spanUnder.className += " amt-active";
                     var m = Number((value % 1).toFixed(1));
                     spanUnder.style.width = (m * 100) + "%";
-                    spanOuter.className += " amt-selected";
 
-                } 
+                } else{
+                    spanOuter.style.color = this._defaultOptions.backgroundColor;
+                    spanOuter.classList.remove("amt-active");
+                    spanUnder.style.width = "0%";  
+                }
             }
 
             //set default value
@@ -204,7 +207,10 @@ export class AskmethatRating {
     */
     private setOrUnsetActive(value: number){
         //delete hover color only if amt-selected is not present into the current span
-        for(let i = this._defaultOptions.minRating; i <= this._defaultOptions.maxRating; i++){
+        for(let i = 1; i <= this._defaultOptions.maxRating; i++){
+            //keep min rating 
+            if(i < this._defaultOptions.minRating)
+                continue;
             var span = <HTMLSpanElement> this._parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
             //all span before minRating should be direclty active
             var underSpan = <HTMLSpanElement> span.querySelector(".amc-rating-under");
@@ -238,7 +244,6 @@ export class AskmethatRating {
     */
     public static value(identifier: string): number{
         var div = document.querySelector(identifier);
-        console.log(div)
         if(div === undefined || div === null) 
             throw new Error("container do not exist");
         
