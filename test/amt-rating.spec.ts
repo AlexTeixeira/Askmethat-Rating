@@ -25,6 +25,7 @@ beforeEach(function () {
         minRating: 1,
         maxRating: 5,
         readonly: false,
+        step: 0
         
       
       };
@@ -42,7 +43,9 @@ describe('#configuration', () => {
         fontClass: "fa fa-class",
         minRating: 1,
         maxRating: 5,
-        readonly: false
+        readonly: false,
+        step: 0
+
       
       };
       var amt = new AskmethatRating(div, 1, options);
@@ -57,7 +60,9 @@ describe('#configuration', () => {
         fontClass: "fa fa-class",
         minRating: 0,
         maxRating: 5,
-        readonly: false
+        readonly: false,
+        step: 0
+
       
       };
 
@@ -67,7 +72,8 @@ describe('#configuration', () => {
         fontClass: "fa fa-class",
         minRating: 0,
         maxRating: 5,
-        readonly: false
+        readonly: false,
+        step: 0
       
       };
       var amt1 = new AskmethatRating(div, 1, options1 );
@@ -85,7 +91,8 @@ describe('#configuration', () => {
         fontClass: "fa fa-class",
         minRating: 2,
         maxRating: 5,
-        readonly: false
+        readonly: false,
+        step: 0
       
       };
       expect(() => {new AskmethatRating(div, 1, options)}).to.throw(Error,"Default value should be higher than minRating options");
@@ -137,7 +144,8 @@ describe('#display', () => {
           fontClass: "fa fa-class",
           minRating: 1,
           maxRating: 5,
-          readonly: false
+          readonly: false,
+          step: 0
         
         };
 
@@ -219,7 +227,8 @@ describe('#display', () => {
           fontClass: "fa fa-class",
           minRating: 1,
           maxRating: 5,
-          readonly: true
+          readonly: true,
+          step: 0
        };
 
        subject = new AskmethatRating(div,1, options);

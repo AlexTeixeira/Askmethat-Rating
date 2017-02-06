@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <title>Askmethat Rating</title>
+
+    <link rel="stylesheet" title="amtRatingCss" type="text/css" href="../dist/css/amt-rating.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+
+  </head>
+  <body onload="PR.prettyPrint()">
+    <header>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Askmethat Rating</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav col-10">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples.html">Examples</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="documentation.html">Documentation <span class="sr-only">(current)</span></a>
+            </li>        
+          </ul>
+          <ul class="navbar-nav navbar-right col-2">
+            <li class="nav-item pull-right">
+              <a href="https://github.com/AlexTeixeira/Askmethat-Rating" class="nav-link " target="_blank"><i class="fa fa-github"></i> GitHub</a>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section>
+      <div class="container-fluid">
+        <div class="jumbotron text-center">
+          <h1 class="display-3">Askmethat-Rating</h1>
+          <p class="lead">This is a simple JavaScript plugin powered by Typescript. This plugin allows you to create custom rating using any font from Font-Awesome or Glyphicon.</p>
+          <hr class="my-4">
+          <p>You can customize the style of the rating and customize the way to work of it ! <button class="btn btn-xs btn-default" href="" role="button">Start Learning</button></p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-download"></i>  Download</a>
+          </p>
+          <!--<article>
+            <div class="text-center">           
+             
+                <div class="btn-group">
+                   <button href="https://github.com/AlexTeixeira/Askmethat-Rating" type="button" class="btn btn-default ">
+                    <span class="fa fa-star"></span>
+                    <span>7</span>
+                  </button>
+                </div>
+                 <div class="btn-group">
+                  <button href="https://github.com/AlexTeixeira/Askmethat-Rating" type="button" class="btn btn-default ">
+                    <span class="fa fa-code-fork"></span>
+                    <span>7</span>
+                  </button>
+                </div>
+            </div>
+          </article>-->
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>Getting Started</h1>
+            <hr>
+          </div>
+
+           <div class="col-12">
+             <h4>Install with Bower</h4>
+          </div>
+           <div class="col-12">
+             <h4>Install with Npm</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>Usage</h1>
+            <hr>
+          </div>
+
+          <div class="col-12">
+            <h4>HTML</h1>
+          </div>
+          <div class="col-12">
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                  <div id="myRating"></div>
+              </xmp>
+            </pre>
+          </div>
+          <div class="col-12">
+            <h4>JavaScript</h1>
+          </div>
+          <div class="col-12">
+            <pre class="prettyprint">
+              <code class="language-javascript">
+              var options = {
+                  backgroundColor : "#e5e500",
+                  hoverColor: "#ffff66",
+                  fontClass: "fa fa-star",
+                  minRating: 1,
+                  maxRating: 5,
+                  readonly: false,
+                  step: 2
+                  
+                
+                };
+
+              var div = document.getElementById("myRating");
+              var amcRating = new AskmethatRating(div, 2, options);              
+              </code>
+            </pre>
+           
+          </code>
+        </div>
+      </div>
+    </section>
+  </body>
+
+
+  <script type="text/javascript" src="../dist/js/amt-rating.js" ></script>
+ <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+
+  <script>
+   /*var options = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-star",
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: 2
+        
+      
+      };
+
+
+    var div = document.getElementById("amc-rating");
+    var amcRating = new AskmethatRating(div, 2, options);
+
+    div.addEventListener("amt-change", function(e){
+        console.log(e)
+    });*/
+  </script>
+</html>
