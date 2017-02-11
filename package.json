@@ -15,7 +15,7 @@
     "askmethat"
   ],
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "devDependencies": {
     "arr-flatten": "^1.0.1",
     "chai": "^3.5.0",

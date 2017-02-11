@@ -9,7 +9,7 @@ typings/
 src/
 test/
 *.yml
-*.js
+./*.js
 *.json
 *log
-.lock
+*.lock
