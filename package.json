@@ -23,5 +23,8 @@
     "mocha": "^3.2.0",
     "typescript": "^2.1.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "test": "gulp coveralls"
+  }
 }

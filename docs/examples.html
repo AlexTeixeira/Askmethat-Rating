@@ -310,10 +310,10 @@
                     backgroundColor : "#e5e500",
                     hoverColor: "#ffff66",
                     fontClass: "fa fa-star",
-                    minRating: 1,
+                    minRating: 0,
                     maxRating: 5,
                     readonly: false,
-                    step: AskmethatRatingSteps["OnePerOneStep"]                                       
+                    step: AskmethatRatingSteps["HalfStep"]                                       
                     };
 
                 var changeDiv = document.getElementById("changeEventRating");
@@ -456,14 +456,14 @@
         backgroundColor : "#e5e500",
         hoverColor: "#ffff66",
         fontClass: "fa fa-star",
-        minRating: 1,
+        minRating: 0,
         maxRating: 5,
         readonly: false,
-        step: AskmethatRatingSteps["OnePerOneStep"]                                       
+        step: AskmethatRatingSteps["HalfStep"]                                       
        };
 
        var changeDiv = document.getElementById("changeEventRating");
-       var amtRating = new AskmethatRating(changeDiv, 2, options);
+       var amtRating = new AskmethatRating(changeDiv, 0, options);
 
        changeDiv.addEventListener("amt-change", function(e){
            document.getElementById("changeEventRatingValue").innerHTML = e.detail;

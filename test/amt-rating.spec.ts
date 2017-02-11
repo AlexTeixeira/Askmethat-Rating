@@ -201,6 +201,20 @@ describe('#display', () => {
         expect(() => {subject.value = val }).to.throw(Error,"New value cannot be less than min rating value");
      });
 
+
+     it("Throw error trying to retrieve value without object", () => {
+        expect(() => {
+          AskmethatRating.value("#toto")
+        
+        }).to.throw(Error,"container do not exist");
+
+     });
+
+    it("Retrieve value without object", () => {
+      var val =  AskmethatRating.value("#amtTest")
+        expect(val).to.be.equal(defaultValue);
+     });
+
   });
 
 
@@ -227,7 +241,7 @@ describe('#display', () => {
 
      });
 
-     /*it("Trigger a mouseleave in specific rating element", () => {
+     it("Trigger a mouseleave in specific rating element", () => {
         let val = 4;
         var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
 
@@ -241,7 +255,7 @@ describe('#display', () => {
 
         expect(span.classList.contains("amt-active")).to.be.false;
 
-     });*/
+     });
 
      it("Do not trigger event if readonly is true", () => {
         var options = {
@@ -263,18 +277,6 @@ describe('#display', () => {
 
      });
 
-     it("Throw error trying to retrieve value without object", () => {
-        expect(() => {
-          AskmethatRating.value("#toto")
-        
-        }).to.throw(Error,"container do not exist");
-
-     });
-
-    it("Retrieve value without object", () => {
-      var val =  AskmethatRating.value("#amtTest")
-        expect(val).to.be.equal(defaultValue);
-     });
 
     it('expecting to do not set a rating value less than the min rating on click', () => {
       var options = {

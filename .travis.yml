@@ -26,4 +26,3 @@ before_script:
   - npm install -g chai
   - gulp ts-compile
   - gulp sass
-  - gulp coveralls

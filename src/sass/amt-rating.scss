@@ -2,11 +2,11 @@
 .amt-rating-elem{
     cursor: pointer;
 
-    &.amc-rating {
+    &.amt-rating {
     position: relative;
     display: inline-block;
 
-        .amc-rating-under{
+        .amt-rating-under{
             overflow: hidden;
             position: absolute;
             top: 0;

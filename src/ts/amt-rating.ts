@@ -152,13 +152,19 @@ export class AskmethatRating {
         if(value < this._defaultOptions.minRating){
             return;
         }
-        this._value = value;
 
         //delete current selected
-        this._parentElement.querySelector(".amt-selected").classList.remove("amt-selected");
+        if(this.value !== 0){
+            this._parentElement.querySelector(".amt-selected").classList.remove("amt-selected");
+        }
       
-        span.className += " amt-selected";       
+        this._value = value;
 
+        //set selected if is not 0
+        if(this.value != 0)
+            span.className += " amt-selected";       
+
+        
         this._changeEvent = new CustomEvent("amt-change", { 'detail' : this.value})
         this._changeEvent.initEvent("amt-change", false, true);
         this._parentElement.dispatchEvent(this._changeEvent);
@@ -191,10 +197,15 @@ export class AskmethatRating {
         var value = (data - 1) + Number((mousePos * 0.01).toFixed(1));
         value = this.getValueAccordingToStep(value);
 
-        if(Number(value) && isNaN(mousePos)){
+        if(Number(value) && isFinite(value)){
             this.setOrUnsetActive(value);
         }
         else{
+            if(value == 0){
+                this.setOrUnsetActive(value);
+                return;
+            }
+             
             this.setOrUnsetActive(data);
         }
     }
