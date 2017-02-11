@@ -228,7 +228,7 @@ describe('#display', () => {
      });
 
      it("Trigger a mouseleave in specific rating element", () => {
-        let val = 3;
+        let val = 4;
         var span = <HTMLSpanElement> div.children[val];
 
         var event;
