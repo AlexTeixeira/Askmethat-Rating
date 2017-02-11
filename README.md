@@ -57,7 +57,8 @@ var options = {
         fontClass: "fa fa-star", //This is the font class you wan to use
         minRating: 1, //This is the minimum rating you want to be active
         maxRating: 5 //this is the maximum of rating you can have,
-        readonly: false // disable all events if is true
+        readonly: false // disable all events if is true,
+        step : 0 // change the step on mouse over
       
       };
 ```
@@ -110,5 +111,3 @@ The next steps are :
 ## Contributors
 
 Anyone who want to contribute to the plugin can do it.
-
-Just fork the develop branch of the project and create a pull request

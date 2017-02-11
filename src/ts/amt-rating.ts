@@ -50,7 +50,7 @@ export class AskmethatRating {
         return this._defaultOptions;
     }
 
-    constructor(element: HTMLDivElement, defaultValue?: number, options?: IAskmethatRatingOptions,) {
+    constructor(element: HTMLDivElement, defaultValue?: number, options?: IAskmethatRatingOptions) {
         this._parentElement = element;
 
         //override default options
@@ -83,14 +83,14 @@ export class AskmethatRating {
             let spanOuter = document.createElement("span");
             
             spanOuter.className = this._defaultOptions.fontClass;
-            spanOuter.className += " amt-rating-elem amc-rating-under amc-rating";
+            spanOuter.className += " amt-rating-elem amt-rating-under amt-rating";
 
             spanOuter.setAttribute("data-rating", i.toString());
             spanOuter.style.color = this._defaultOptions.backgroundColor;
 
             //configure outer
             spanUnder.className += this._defaultOptions.fontClass;
-            spanUnder.className += " amc-rating-under amc-rating";
+            spanUnder.className += " amt-rating-under am-rating";
             spanUnder.style.color = this._defaultOptions.hoverColor;
             spanUnder.style.width = "0%";
 
@@ -100,10 +100,14 @@ export class AskmethatRating {
                     spanOuter.className += " amt-active";
                 }
 
-                spanUnder.style.width = "100%";                      
+                spanUnder.style.width = "100%";    
+
+                if(i === value)            
+                    spanOuter.className += " amt-selected";      
              } else{
+                
                 if(Number(value.toFixed(1)) >= (i - 1) && Number(value.toFixed(1)) < i && (value % 1) !== 0 ){
-                    spanUnder.className += " amt-active";
+                    spanOuter.className += " amt-active amt-selected";
                     var m = Number((value % 1).toFixed(1));
                     spanUnder.style.width = (m * 100) + "%";
 
@@ -113,6 +117,7 @@ export class AskmethatRating {
                     spanUnder.style.width = "0%";  
                 }
             }
+            
 
             //set default value
             this._value = value;
@@ -137,12 +142,16 @@ export class AskmethatRating {
     * @param  {type} event : Event {event object}
     */
     private onRatingClick(event? : Event):void{
+        
         var span = <HTMLSpanElement>event.srcElement;
-        var underSpan = <HTMLSpanElement> span.querySelector(".amc-rating-under");
+        var underSpan = <HTMLSpanElement> span.querySelector(".amt-rating-under");
 
         var data = Number(span.getAttribute("data-rating"));
         var value = (data - 1) + Number((parseInt(underSpan.style.width,10) * 0.01).toFixed(1));
 
+        if(value < this._defaultOptions.minRating){
+            return;
+        }
         this._value = value;
 
         //delete current selected
@@ -160,7 +169,7 @@ export class AskmethatRating {
     * @param  {Number} value:number the current value
     * @return {Number} the new value according to step
     */
-    private getValueAccordingToStep(value:number): number{
+    protected getValueAccordingToStep(value:number): number{
         switch(this.defaultOptions.step){
             case AskmethatRatingSteps.HalfStep:
                 return  Math.round(value * 2) / 2;
@@ -182,13 +191,12 @@ export class AskmethatRating {
         var value = (data - 1) + Number((mousePos * 0.01).toFixed(1));
         value = this.getValueAccordingToStep(value);
 
-        if(Number(value)){
+        if(Number(value) && isNaN(mousePos)){
             this.setOrUnsetActive(value);
         }
         else{
             this.setOrUnsetActive(data);
         }
-
     }
 
 
@@ -205,22 +213,22 @@ export class AskmethatRating {
     * @param  {HTMLSpanElement} current :  current span element
     * @param  {number} current :  value needed for the if
     */
-    private setOrUnsetActive(value: number){
+    protected setOrUnsetActive(value: number){
         //delete hover color only if amt-selected is not present into the current span
         for(let i = 1; i <= this._defaultOptions.maxRating; i++){
             //keep min rating 
-            if(i < this._defaultOptions.minRating)
+            if(i < this._defaultOptions.minRating){
                 continue;
+            }
             var span = <HTMLSpanElement> this._parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
             //all span before minRating should be direclty active
-            var underSpan = <HTMLSpanElement> span.querySelector(".amc-rating-under");
-
+            var underSpan = <HTMLSpanElement> span.querySelector(".amt-rating-under");
             if (i <= value) {
                 if(!span.classList.contains("amt-active")){
                     span.className += " amt-active";
                 }
 
-                var underSpan = <HTMLSpanElement> span.querySelector(".amc-rating-under");
+                var underSpan = <HTMLSpanElement> span.querySelector(".amt-rating-under");
                 underSpan.style.width = "100%";                      
              } else{
                 if(Number(value.toFixed(1)) >= (i - 1) && Number(value.toFixed(1)) < i && (value % 1) !== 0 ){
@@ -248,7 +256,7 @@ export class AskmethatRating {
             throw new Error("container do not exist");
         
         var span = <HTMLSpanElement>div.querySelector(".amt-selected");
-        var underSpan = <HTMLSpanElement> span.querySelector(".amc-rating-under");
+        var underSpan = <HTMLSpanElement> span.querySelector(".amt-rating-under");
 
         var data = Number(span.getAttribute("data-rating"));
         var value = (data - 1) + Number((parseInt(underSpan.style.width,10) * 0.01).toFixed(1));
