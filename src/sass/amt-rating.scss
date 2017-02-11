@@ -1,17 +1,22 @@
+
 .amt-rating-elem{
     cursor: pointer;
 
-    &.amt-rating-half {
-        position:relative;
-        line-height: normal;
+    &.amt-rating {
+    position: relative;
+    display: inline-block;
 
-        &:after{
-            content:'';
-            position:absolute;
-            z-index:1;
-            height: 110%;
-            left: -1%;
+        .amt-rating-under{
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
         }
     }
+
 }
+
+
+
 

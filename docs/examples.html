@@ -1,0 +1,473 @@
+<html>
+
+<head>
+  <title>Askmethat Rating</title>
+
+  <link rel="stylesheet" title="amtRatingCss" type="text/css" href="../dist/css/amt-rating.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body style="padding-bottom: 50px;">
+  <header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Askmethat Rating</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav col-10">
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html">Home </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="examples.html">Examples <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="documentation.html">Documentation <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-right col-2">
+            <li class="nav-item pull-right">
+              <a href="https://github.com/AlexTeixeira/Askmethat-Rating" class="nav-link " target="_blank"><i class="fa fa-github"></i> GitHub</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Basic Examples</h1>
+          <hr>
+        </div>
+        <!-- First examples !-->
+        <div class="col-12">
+          <h4 class="second-title">Simple select rating</h4>
+          <p>Simple clickable rating</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="myBasicRating"></div>
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                var options = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 1,
+                    maxRating: 5,
+                    readonly: false,
+                    step: AskmethatRatingSteps["OnePerOneStep"]                                       
+                    };
+
+                var div = document.getElementById("myBasicRating");
+                var amtRating = new AskmethatRating(div, 2, options);              
+                </code>
+            </pre>
+          </div>
+          <div class="card-block" style="font-size:2em;">
+            <div id="myBasicRating" class="text-center"></div>
+          </div>
+        </div>
+        <!-- Second Example -->
+        <div class="col-12">
+          <h4 class="second-title">Multiple select rating</h4>
+          <p>Multiple independant rating</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="myFirstMultipleRating"></div>
+                <div id="mySecondMultipleRating"></div>
+
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                  var options = {
+                      backgroundColor : "#e5e500",
+                      hoverColor: "#ffff66",
+                      fontClass: "fa fa-star",
+                      minRating: 1,
+                      maxRating: 5,
+                      readonly: false,
+                      step: AskmethatRatingSteps["OnePerOneStep"]
+                      };
+
+                  var div = document.getElementById("myFirstMultipleRating");
+                  var amtRating1 = new AskmethatRating(div, 1, options);   
+                  var div = document.getElementById("mySecondMultipleRating");
+                  var amtRating2 = new AskmethatRating(div, 2, options);               
+                </code>
+            </pre>
+          </div>
+          <div class="card-block text-center" style="font-size:2em;">
+            <div id="myFirstMultipleRating"></div>
+            <div id="mySecondMultipleRating"></div>
+          </div>
+        </div>
+        <!-- third Example -->
+        <div class="col-12">
+          <h4 class="second-title">Different fonts example</h4>
+          <p>Rating using different fonts</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="myFirstMultipleRating"></div>
+                <div id="mySecondMultipleRating"></div>
+
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                  var options1 = {
+                      backgroundColor : "#e5e500",
+                      hoverColor: "#ffff66",
+                      fontClass: "fa fa-cloud",
+                      minRating: 1,
+                      maxRating: 5,
+                      readonly: false,
+                      step: AskmethatRatingSteps["OnePerOneStep"]
+                      
+                      
+                      };
+                  var options2 = {
+                      backgroundColor : "#e5e500",
+                      hoverColor: "#ffff66",
+                      fontClass: "octicon octicon-clippy",
+                      minRating: 1,
+                      maxRating: 5,
+                      readonly: false,
+                      step: AskmethatRatingSteps["OnePerOneStep"]
+                      
+                      
+                      };
+
+                  var div = document.getElementById("myFontAwesomeRating");
+                  var amtRating1 = new AskmethatRating(div, 1, options1);   
+                  var div = document.getElementById("myOcticonRating");
+                  var amtRating2 = new AskmethatRating(div, 1, options2);               
+                </code>
+            </pre>
+          </div>
+          <div class="card-block text-center" style="font-size:2em;">
+            <div id="myFontAwesomeRating"></div>
+            <div id="myOcticonRating"></div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-12">
+          <h1>Working with options</h1>
+          <hr>
+        </div>
+         <!-- fourth Example -->
+        <div class="col-12">
+          <h4 class="second-title">Different rating steps</h4>
+          <p>Using the three differents step available for rating</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="minimalStepRating"></div>
+                <div id="halfStepRating"></div>
+                <div id="fullStepRating"></div>
+
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                  var decimalOpt = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 1,
+                    maxRating: 5,
+                    readonly: false,
+                    step: AskmethatRatingSteps["DecimalStep"]
+                  };
+
+                  var halpOpt = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 1,
+                    maxRating: 5,
+                    readonly: false,
+                    step: AskmethatRatingSteps["HalfStep"]
+                  };
+
+                  var FullOpt = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 1,
+                    maxRating: 5,
+                    readonly: false,
+                    step: AskmethatRatingSteps["OnePerOneStep"]
+                  };
+
+                  var div = document.getElementById("minimalStepRating");
+                  var amtRating1 = new AskmethatRating(div, 1.8, decimalOpt);   
+
+                  var div = document.getElementById("halfStepRating");
+                  var amtRating2 = new AskmethatRating(div, 1.5, halpOpt);    
+
+                  var div = document.getElementById("fullStepRating");
+                  var amtRating3 = new AskmethatRating(div, 1, FullOpt);             
+                </code>
+            </pre>
+          </div>
+          <div class="card-block text-center" style="font-size:2em;">
+             <div id="minimalStepRating"></div>
+             <div id="halfStepRating"></div>
+             <div id="fullStepRating"></div>
+          </div>
+        </div>
+        <!-- Fith examples !-->
+        <div class="col-12">
+          <h4 class="second-title">Readonly rating</h4>
+          <p>Rating at readonly have events disabled</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="readonlyRating"></div>
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                var options = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 1,
+                    maxRating: 5,
+                    readonly: true,
+                    step: AskmethatRatingSteps["DecimalStep"]                                       
+                    };
+
+                var div = document.getElementById("readonlyRating");
+                var amtRating = new AskmethatRating(div, 3.2, options);              
+                </code>
+            </pre>
+          </div>
+          <div class="card-block" style="font-size:2em;">
+            <div id="readonlyRating" class="text-center"></div>
+          </div>
+        </div>
+         <div class="row">
+        <div class="col-12">
+          <h1>Working with events</h1>
+          <hr>
+        </div>
+      <!-- sixth examples !-->
+        <div class="col-12">
+          <h4 class="second-title">On change event</h4>
+          <p>Event fired when the value of the rating change</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="changeEventRating"></div>
+                <span id="changeEventRatingValue">2<span>
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                var options = {
+                    backgroundColor : "#e5e500",
+                    hoverColor: "#ffff66",
+                    fontClass: "fa fa-star",
+                    minRating: 0,
+                    maxRating: 5,
+                    readonly: false,
+                    step: AskmethatRatingSteps["HalfStep"]                                       
+                    };
+
+                var changeDiv = document.getElementById("changeEventRating");
+                var amtRating = new AskmethatRating(div, 2, options);
+
+                 changeDiv.addEventListener("amt-change", function(e){
+                  document.getElementById("changeEventRatingValue").innerHTML = e.detail;
+                });        
+                </code>
+            </pre>
+          </div>
+          <div class="card-block text-center" style="font-size:2em;">
+                <div id="changeEventRating"></div>
+                <span id="changeEventRatingValue">2<span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+
+<script type="text/javascript" src="../dist/js/amt-rating.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+
+
+<script>
+  //Basic Example
+   var options = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-star",
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: AskmethatRatingSteps["OnePerOneStep"]        
+      
+      };
+
+
+    var div = document.getElementById("myBasicRating");
+    var amtRating = new AskmethatRating(div, 1, options);
+
+
+  //Multiple Example
+    var div = document.getElementById("myFirstMultipleRating");
+    var amtRating1 = new AskmethatRating(div, 1, options);   
+    var div = document.getElementById("mySecondMultipleRating");
+    var amtRating2 = new AskmethatRating(div, 2, options);   
+
+//Fonts example
+     var options1 = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-cloud",
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: AskmethatRatingSteps["OnePerOneStep"]
+     };
+        
+    var options2 = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "octicon octicon-clippy",
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: AskmethatRatingSteps["OnePerOneStep"]
+     };
+
+    var div = document.getElementById("myFontAwesomeRating");
+    var amtRating1 = new AskmethatRating(div, 1, options1);   
+    var div = document.getElementById("myOcticonRating");
+    var amtRating2 = new AskmethatRating(div, 1, options2);      
+
+    //step example
+    var decimalOpt = {
+      backgroundColor : "#e5e500",
+      hoverColor: "#ffff66",
+      fontClass: "fa fa-star",
+      minRating: 1,
+      maxRating: 5,
+      readonly: false,
+      step: AskmethatRatingSteps["DecimalStep"]
+    };
+
+     var halpOpt = {
+      backgroundColor : "#e5e500",
+      hoverColor: "#ffff66",
+      fontClass: "fa fa-star",
+      minRating: 1,
+      maxRating: 5,
+      readonly: false,
+      step: AskmethatRatingSteps["HalfStep"]
+    };
+
+     var FullOpt = {
+      backgroundColor : "#e5e500",
+      hoverColor: "#ffff66",
+      fontClass: "fa fa-star",
+      minRating: 1,
+      maxRating: 5,
+      readonly: false,
+      step: AskmethatRatingSteps["OnePerOneStep"]
+    };
+
+    var div = document.getElementById("minimalStepRating");
+    var amtRating1 = new AskmethatRating(div, 1.8, decimalOpt);   
+
+    var div = document.getElementById("halfStepRating");
+    var amtRating2 = new AskmethatRating(div, 1.5, halpOpt);    
+
+    var div = document.getElementById("fullStepRating");
+    var amtRating3 = new AskmethatRating(div, 1, FullOpt);
+
+
+    //on change example
+     var options = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-star",
+        minRating: 1,
+        maxRating: 5,
+        readonly: true,
+        step: AskmethatRatingSteps["DecimalStep"]                                       
+      };
+
+      var div = document.getElementById("readonlyRating");
+      var amtRating = new AskmethatRating(div, 3.2, options);  
+
+
+      var options = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-star",
+        minRating: 0,
+        maxRating: 5,
+        readonly: false,
+        step: AskmethatRatingSteps["HalfStep"]                                       
+       };
+
+       var changeDiv = document.getElementById("changeEventRating");
+       var amtRating = new AskmethatRating(changeDiv, 0, options);
+
+       changeDiv.addEventListener("amt-change", function(e){
+           document.getElementById("changeEventRatingValue").innerHTML = e.detail;
+       });          
+  </script>
+
+</html>

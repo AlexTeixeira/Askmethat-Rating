@@ -1,15 +1,14 @@
 # askmethat-rating
 
 master:
-[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Ratingbranch=master)
+[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
+[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=master)
 
 develop:
-[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=develop)](https://travis-ci.org/AlexTeixeira/powerful-rating.svg?branch=develop)
+[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=develop)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=develop)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=develop)
 
-
-### Synopsis
+## Synopsis
 
 This plugins was made to allow user to create any rating with any font ( like font-awesome or glyphicons).
 
@@ -56,7 +55,9 @@ var options = {
         hoverColor: "#ffff66", //This is the color shown when a rating is  "active"
         fontClass: "fa fa-star", //This is the font class you wan to use
         minRating: 1, //This is the minimum rating you want to be active
-        maxRating: 5 //this is the maximum of rating you can have
+        maxRating: 5 //this is the maximum of rating you can have,
+        readonly: false // disable all events if is true,
+        step : 0 // change the step on mouse over
       
       };
 ```
@@ -64,16 +65,23 @@ var options = {
 
 ### Generate the rating
 
-This example show you how to create a rating starting at 
+This example show you how to create a rating starting with default options and using as default value minRating
 
 ```javascript
 var container = document.getElementById("amtRating");
 var amt = new AskmethatRating(container); //if you don't give options to the class, it will use the default ones
 ```
 
+If you want to set a custom default value, call the plugin with this additional parameter
+
+```javascript
+var container = document.getElementById("amtRating");
+var amt = new AskmethatRating(container, 2); //if you don't give options to the class, it will use the default ones
+```
+
 ### Get the rating value
 
-This method retrive the selected rating value.
+This method retrieve the selected rating value.
 
 #### From the JavaScript object
 
@@ -96,11 +104,9 @@ console.log(AskmethatRating.value("#amtRating"));
 
 The next steps are :
 
-1. Allow the plugins to use decimal values instead of only integer
+1. Bind a change value to allow user to add custom code when code is changing
 2. Allow the plugins to use jQuery for the one user of this plugin
 
 ## Contributors
 
-Anyone who want to contribute to the plugin can.
-
-Just fork the project and create a pull request
+Anyone who want to contribute to the plugin can do it.

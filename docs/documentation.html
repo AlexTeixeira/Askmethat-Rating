@@ -1,0 +1,228 @@
+<html>
+
+<head>
+  <title>Askmethat Rating</title>
+
+  <link rel="stylesheet" title="amtRatingCss" type="text/css" href="../dist/css/amt-rating.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Askmethat Rating</a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav col-10">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="examples.html">Examples </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="documentation.html">Documentation <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-right col-2">
+              <li class="nav-item pull-right">
+                <a href="https://github.com/AlexTeixeira/Askmethat-Rating" class="nav-link " target="_blank"><i class="fa fa-github"></i> GitHub</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+  </header>
+</body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Options</h1>
+      <hr>
+    </div>
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Default</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>backgroundColor</td>
+            <td>
+              Displayed background color when the ratings are not <i>hovered/active/selected</i>
+            </td> 
+            <td>
+              <strong>#e5e500</strong>
+            </td>         
+          </tr>   
+          <tr>
+            <td>hoverColor</td>
+            <td>
+              Displayed background color when the ratings are <i>hovered/active/selected</i>
+            </td>  
+            <td>
+              <strong>#ffff66</strong>
+            </td>                
+          </tr>    
+           <tr>
+            <td>fontClass</td>
+            <td>
+              This is the font class that you want to use with the current rating</br>
+              For example : <i>"fa fa-star"</i>
+            </td> 
+            <td>
+              <strong>fa fa-star</strong>
+            </td>          
+          </tr>   
+           <tr>
+            <td>minRating</td>
+            <td>
+              This is the minimum value that the user can select</br>
+              If the value is one, the user cannot set the rating to <strong>0</strong>
+            </td> 
+            <td>
+              <strong>1</strong>
+            </td>      
+          </tr>  
+          <tr>
+            <td>maxRating</td>
+            <td>
+              This is the wanted number of rating. Currently this is unlimited
+            </td> 
+             <td>
+              <strong>5</strong>
+            </td>         
+          </tr>    
+          <tr>
+            <td>readonly</td>
+            <td>
+              Disable all the events. The value can be set manually
+            </td> 
+             <td>
+              <strong>false</strong>
+            </td>         
+          </tr>   
+          <tr>
+            <td>step</td>
+            <td>
+              Step when you hover the rating. </br></br>
+              <strong>AskmethatRatingSteps["DecimalStep"]</strong> is 0.1 per 0.1 </br>
+              <strong>AskmethatRatingSteps["HalfStep"]</strong> is 0.5 per 0.5 </br>
+              <strong>AskmethatRatingSteps["OnePerOneStep"]</strong> is 1 per 1 </br>
+
+            </td> 
+             <td>
+              <strong>AskmethatRatingSteps["DecimalStep"]</strong>
+            </td>         
+          </tr>        
+        </tbody>
+      </table>
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-12">
+      <h1>Functions</h1>
+      <hr>
+    </div>
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Parameters</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>render</td>
+            <td>
+              This function render a new set of rating into the parent element.
+            </td>
+             <td>
+              <ul>
+                <li>default value, if is 2 the plugin will active the two first rating elements</li>
+              </ul>
+            </td> 
+            <td>
+              <code>amtRating.render(2);</code>
+            </td>         
+          </tr>   
+          <tr>
+            <td>value</td>
+            <td>
+              Return the value for a specific rating element
+            </td>
+             <td>
+              <ul>
+                <li>The rating element identifier</li>
+              </ul>
+            </td> 
+            <td>
+              <code>AskmethatRating.value("#myBasicRating")</code>
+            </td>         
+          </tr>           
+        </tbody>
+      </table>
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-12">
+      <h1>Event</h1>
+      <hr>
+    </div>
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>amt-change</td>
+            <td>
+              This function bind an event that is triggered when the user select a specific value
+            </td>
+            <td>
+              <code>
+                changeDiv.addEventListener("amt-change", function(e){
+                  alert(e.detail);
+                }); 
+              </code>
+            </td>         
+          </tr>          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="../dist/js/amt-rating.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+      crossorigin="anonymous"></script>
+
+</html>

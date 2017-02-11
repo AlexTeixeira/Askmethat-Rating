@@ -1,6 +1,21 @@
 {
-  "name": "powerfull-rating",
-  "version": "0.0.1",
+  "name": "askmethat-rating",
+  "author": {
+    "name": "Alexandre Teixeira",
+    "email": "askmethatfr@gmail.com"
+  },
+  "description": "Simple plugin providing to use fonts as rating",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexTeixeira/Askmethat-Rating"
+  },
+  "keywords": [
+    "rating",
+    "font",
+    "askmethat"
+  ],
+  "license": "MIT",
+  "version": "0.1.0",
   "devDependencies": {
     "arr-flatten": "^1.0.1",
     "chai": "^3.5.0",
@@ -18,10 +33,13 @@
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.3.0",
     "karma-typescript": "^2.1.6",
-    "karma-typescript-preprocessor": "^0.3.1",
+    "karma-typescript-preprocessor2": "^1.2.1",
     "merge": "^1.2.0",
     "mocha": "^3.2.0",
     "typescript": "^2.1.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "test": "gulp coveralls"
+  }
 }

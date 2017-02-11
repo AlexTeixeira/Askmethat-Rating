@@ -6,9 +6,24 @@ import { expect, assert } from 'chai';
 import {AskmethatRating} from '../src/ts/amt-rating';
 
 
+class TestPrivates extends AskmethatRating{
+  constructor(element: HTMLDivElement, defaultValue?: number, options?: any){
+    super(element,defaultValue,options);
+  }
+
+  public testGetValueAccordingToStep(value: number){
+    return this.getValueAccordingToStep(value);
+  }
+
+  public testSetorUnset(value: number){
+    return this.setOrUnsetActive(value);
+  }
+}
+
+
 var subject : AskmethatRating;
 var div : HTMLDivElement;
-
+var defaultValue : number = 1;
 beforeEach(function () {
      div = <HTMLDivElement>document.getElementById("amtTest");
     if(div){
@@ -17,18 +32,22 @@ beforeEach(function () {
     else{
         div = document.createElement("div");
         div.id = "amtTest";
+        document.body.appendChild(div);
     }
-     var options = {
+
+   
+    var options = {
         backgroundColor : "#ccc",
         hoverColor: "#eee",
         fontClass: "fa fa-class",
-        minRating: 2,
-        maxRating: 5
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: 2
+
       
       };
-
-    subject = new AskmethatRating(div,options);
-
+      subject = new AskmethatRating(div, 1, options);
 });
 
 
@@ -38,11 +57,14 @@ describe('#configuration', () => {
         backgroundColor : "#ccc",
         hoverColor: "#eee",
         fontClass: "fa fa-class",
-        minRating: 0,
-        maxRating: 5
+        minRating: 1,
+        maxRating: 5,
+        readonly: false,
+        step: 0
+
       
       };
-      var amt = new AskmethatRating(div, options );
+      var amt = new AskmethatRating(div, 1, options);
 
       expect(amt.defaultOptions).deep.equal(options);
     });
@@ -53,7 +75,10 @@ describe('#configuration', () => {
         hoverColor: "#eee",
         fontClass: "fa fa-class",
         minRating: 0,
-        maxRating: 5
+        maxRating: 5,
+        readonly: false,
+        step: 0
+
       
       };
 
@@ -62,16 +87,41 @@ describe('#configuration', () => {
         hoverColor: "#e5e500",
         fontClass: "fa fa-class",
         minRating: 0,
-        maxRating: 5
+        maxRating: 5,
+        readonly: false,
+        step: 0
       
       };
-      var amt1 = new AskmethatRating(div, options1 );
-      var amt2 = new AskmethatRating(div, options2 );
+      var amt1 = new AskmethatRating(div, 1, options1 );
+      var amt2 = new AskmethatRating(div, 1, options2 );
 
       expect(amt1.defaultOptions).deep.equal(options1);
       expect(amt2.defaultOptions).deep.equal(options2);
 
     });
+
+  it('expecting to throw an error if default value is less than minRating', () => {
+       var options = {
+        backgroundColor : "#ccc",
+        hoverColor: "#eee",
+        fontClass: "fa fa-class",
+        minRating: 2,
+        maxRating: 5,
+        readonly: false,
+        step: 0
+      
+      };
+      expect(() => {new AskmethatRating(div, 1, options)}).to.throw(Error,"Default value should be higher than minRating options");
+
+    });
+
+     it('expecting have number of spans equal to maxRating', () => {
+       
+      var nbSpan = div.children.length;
+      expect(nbSpan).to.be.equal(subject.defaultOptions.maxRating);
+
+    });
+
 });
 
 describe('#display', () => {
@@ -93,22 +143,43 @@ describe('#display', () => {
           total += 1;
       }
 
-      expect(total).to.be.equal(subject.defaultOptions.minRating);
+      expect(total).to.be.equal(defaultValue);
       
     });
 
     it("expecting last active is selected", () => {
       var spans = div.querySelectorAll(".amt-active");
 
-      var last = <HTMLSpanElement>spans[subject.defaultOptions.minRating - 1];
+      var last = <HTMLSpanElement>spans[defaultValue - 1];
 
       expect(last.classList.contains(".amt-selected")).to.be.not.equal(undefined);
-
 
     });
 
      it("expecting to retrieve rating value after first render", () => {
-        expect(subject.value).to.be.equal(subject.defaultOptions.minRating);
+        expect(subject.value).to.be.equal(defaultValue);
+     });
+
+     it("expection selected span to have width in under", () =>{
+         var options = {
+          backgroundColor : "#ccc",
+          hoverColor: "#eee",
+          fontClass: "fa fa-class",
+          minRating: 1,
+          maxRating: 5,
+          readonly: false,
+          step: 0
+        
+        };
+
+      subject = new AskmethatRating(div,1.2, options);
+      var span = <HTMLSpanElement>div.querySelector(".amt-selected");
+      var underSpan =  <HTMLSpanElement>span.querySelector(".amt-rating-under");
+
+       var m = parseFloat((1.2 % 1).toFixed(1));
+       var w = (m * 100) + "%";
+
+       expect(underSpan.style.width).to.be.equal(w);
      });
 
 
@@ -125,8 +196,22 @@ describe('#display', () => {
      });
 
      it("expecting that throw an error if new value is less than min rating", () => {
-       let val = 1;
+       let val = 0.5;
         expect(() => {subject.value = val }).to.throw(Error,"New value cannot be less than min rating value");
+     });
+
+
+     it("Throw error trying to retrieve value without object", () => {
+        expect(() => {
+          AskmethatRating.value("#toto")
+        
+        }).to.throw(Error,"container do not exist");
+
+     });
+
+    it("Retrieve value without object", () => {
+      var val =  AskmethatRating.value("#amtTest")
+        expect(val).to.be.equal(defaultValue);
      });
 
   });
@@ -135,42 +220,166 @@ describe('#display', () => {
     describe('#events', () => {
 
       it("Trigger a click in a specific rating element", () => {
-        let val = 2;
-        var span = <HTMLSpanElement> div.children[val];
+        let val = 3;
+        var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
         span.click();
-
-        expect(subject.value).to.be.equal(val+1);
+        expect(subject.value).to.be.equal(val - 1);
 
      });
 
-    it("Trigger a mouseenter in specific rating element", () => {
+    it("Trigger a mousemove in specific rating element", () => {
         let val = 3;
-        var span = <HTMLSpanElement> div.children[val];
+        var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
 
         var event;
         event = document.createEvent('MouseEvents');
-        event.initMouseEvent('mouseenter', true, true, window);
+        event.initMouseEvent('mousemove', true, true, window);
         span.dispatchEvent(event);
 
         expect(span.classList.contains("amt-active")).to.be.true;
 
      });
 
-     it("Trigger a mouseout in specific rating element", () => {
-        let val = 3;
+     /*it("Trigger a mouseleave in specific rating element", () => {
+        let val = 4;
+        var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
+
+        var event;
+        event = document.createEvent('MouseEvents');
+        event.initMouseEvent('mousemove', true, true, window);
+        span.dispatchEvent(event);
+
+        event.initMouseEvent('mouseleave', true, true, window);
+        div.dispatchEvent(event);
+
+        expect(span.classList.contains("amt-active")).to.be.false;
+
+     });*/
+
+     it("Do not trigger event if readonly is true", () => {
+        var options = {
+          backgroundColor : "#ccc",
+          hoverColor: "#eee",
+          fontClass: "fa fa-class",
+          minRating: 1,
+          maxRating: 5,
+          readonly: true,
+          step: 0
+       };
+
+       subject = new AskmethatRating(div,1, options);
+       let val = 2;
+       var span = <HTMLSpanElement> div.children[val];
+       span.click();
+
+       expect(subject.value).not.to.be.equal(val+1);
+
+     });
+
+
+    it('expecting to do not set a rating value less than the min rating on click', () => {
+      var options = {
+          backgroundColor : "#ccc",
+          hoverColor: "#eee",
+          fontClass: "fa fa-class",
+          minRating: 2,
+          maxRating: 5,
+          readonly: false,
+          step: 0
+        
+        };
+        
+        var amt = new AskmethatRating(div, 2, options);
+
+        let val = 0;
+        var span = <HTMLSpanElement> div.children[val];
+        span.click();
+
+        expect(amt.value).to.be.equal(2);
+      
+    });
+
+    it('expecting to do not set a active rating if is less than the min rating on mouse over', () => {
+      var options = {
+          backgroundColor : "#ccc",
+          hoverColor: "#eee",
+          fontClass: "fa fa-class",
+          minRating: 2,
+          maxRating: 5,
+          readonly: false,
+          step: 0
+        
+        };
+        
+        var amt = new AskmethatRating(div, 2, options);
+
+        let val = 0;
         var span = <HTMLSpanElement> div.children[val];
 
         var event;
         event = document.createEvent('MouseEvents');
-        event.initMouseEvent('mouseenter', true, true, window);
+        event.initMouseEvent('mousemove', true, true, window);
         span.dispatchEvent(event);
 
-        event.initMouseEvent('mouseout', true, true, window);
-        span.dispatchEvent(event);
+        expect(span.classList.contains("amt-active")).to.be.true;
+      
+    });
 
-        expect(span.classList.contains("amt-active")).to.be.false;
+  });
 
-     });
+  describe("Private functions", () =>{
 
+      it("test get according value for half steps", () => {
+        var options = {
+            backgroundColor : "#ccc",
+            hoverColor: "#eee",
+            fontClass: "fa fa-class",
+            minRating: 1,
+            maxRating: 5,
+            readonly: true,
+            step: 1
+          };
+
+          var amtTest = new TestPrivates(div,2,options);
+          var val = amtTest.testGetValueAccordingToStep(1.4);
+
+          expect(val).to.be.equals(1.5);
+        });
+
+         it("test get according value for decimal steps", () => {
+        var options = {
+            backgroundColor : "#ccc",
+            hoverColor: "#eee",
+            fontClass: "fa fa-class",
+            minRating: 1,
+            maxRating: 5,
+            readonly: true,
+            step: 2
+          };
+
+          var amtTest = new TestPrivates(div,2,options);
+          var val = amtTest.testGetValueAccordingToStep(1.4);
+
+          expect(val).to.be.equals(2);
+        });
+
+        it("test selected for an decimal value", () => {
+        var options = {
+            backgroundColor : "#ccc",
+            hoverColor: "#eee",
+            fontClass: "fa fa-class",
+            minRating: 1,
+            maxRating: 5,
+            readonly: true,
+            step: 1
+          };
+
+          var amtTest = new TestPrivates(div,2,options);
+          var val = amtTest.testSetorUnset(3.5);
+          
+          var span = <HTMLSpanElement> div.children[2];
+
+          expect(span.classList.contains("amt-active")).to.be.true;
+        });
 
   });
