@@ -21,7 +21,6 @@ class TestPrivates extends AskmethatRating{
 }
 
 
-
 var subject : AskmethatRating;
 var div : HTMLDivElement;
 var defaultValue : number = 1;
@@ -241,7 +240,7 @@ describe('#display', () => {
 
      });
 
-     it("Trigger a mouseleave in specific rating element", () => {
+     /*it("Trigger a mouseleave in specific rating element", () => {
         let val = 4;
         var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
 
@@ -255,7 +254,7 @@ describe('#display', () => {
 
         expect(span.classList.contains("amt-active")).to.be.false;
 
-     });
+     });*/
 
      it("Do not trigger event if readonly is true", () => {
         var options = {
