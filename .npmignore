@@ -1,0 +1,15 @@
+#Ignore README
+README.md
+
+#Ignore config
+.vscode/
+coverage/
+docs/
+typings/
+src/
+test/
+*.yml
+*.js
+*.json
+*log
+.lock

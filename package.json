@@ -1,6 +1,21 @@
 {
-  "name": "powerfull-rating",
-  "version": "0.0.1",
+  "name": "askmethat-rating",
+  "author": {
+    "name": "Alexandre Teixeira",
+    "email": "askmethatfr@gmail.com"
+  },
+  "description": "Simple plugin providing to use fonts as rating",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexTeixeira/Askmethat-Rating"
+  },
+  "keywords": [
+    "rating",
+    "font",
+    "askmethat"
+  ],
+  "license": "MIT",
+  "version": "0.1.0",
   "devDependencies": {
     "arr-flatten": "^1.0.1",
     "chai": "^3.5.0",
