@@ -30,6 +30,7 @@ Some fonts of Font awesome answered my needs, but I did not find any complete pl
 
 ## Installation
 
+### From Source Code
 For now, you could download the repository and use gulp to generate the JavaScript files.
 
 1. Restore the node package using [Yarn](https://yarnpkg.com/)
@@ -42,6 +43,10 @@ gulp default
 3. The javascript and css is in the folder dist.
 
 When the plugin will be stable, it will be available to download it with npm.
+
+### From NPM
+
+``` npm i askmethat-rating
 
 ## Example
 
