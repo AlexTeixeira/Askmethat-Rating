@@ -46,7 +46,10 @@ When the plugin will be stable, it will be available to download it with npm.
 
 ### From NPM
 
-``` npm i askmethat-rating
+```javascript
+npm i askmethat-rating
+```
+
 
 ## Example
 
