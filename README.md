@@ -1,12 +1,15 @@
 # askmethat-rating
 
-master:
-[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
-[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=master)
 
-develop:
+###develop:
 [![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=develop)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=develop)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=develop)
+
+###master:
+[![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
+[![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=master)
+[![npm version](https://badge.fury.io/js/askmethat-rating.svg)](https://badge.fury.io/js/askmethat-rating)
+
 
 ## Synopsis
 
@@ -46,7 +49,10 @@ When the plugin will be stable, it will be available to download it with npm.
 
 ### From NPM
 
-``` npm i askmethat-rating
+```javascript
+npm i askmethat-rating
+```
+
 
 ## Example
 
