@@ -43,4 +43,4 @@ coverage
 samples
 
 #dist files, not needed in repository can be build with gulp
-dist
+#dist needed for bower

@@ -317,7 +317,7 @@
                     };
 
                 var changeDiv = document.getElementById("changeEventRating");
-                var amtRating = new AskmethatRating(div, 2, options);
+                var amtRating = new AskmethatRating(div, 0, options);
 
                  changeDiv.addEventListener("amt-change", function(e){
                   document.getElementById("changeEventRatingValue").innerHTML = e.detail;
@@ -327,7 +327,7 @@
           </div>
           <div class="card-block text-center" style="font-size:2em;">
                 <div id="changeEventRating"></div>
-                <span id="changeEventRatingValue">2<span>
+                <span id="changeEventRatingValue">0<span>
           </div>
         </div>
       </div>
