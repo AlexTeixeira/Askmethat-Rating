@@ -42,8 +42,13 @@
     "mocha": "^3.2.0",
     "typescript": "^2.1.4"
   },
-  "dependencies": {},
-  "scripts": {
-    "test": "gulp coveralls"
-  }
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "less/knackLESS.zip",
+    "test",
+    "README.md"
+  ],
+  "main": "dist/"
 }
