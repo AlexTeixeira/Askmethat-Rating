@@ -1,5 +1,5 @@
 //this is the available options for the plugin
-export interface IAskmethatRatingOptions {
+export interface AskmethatRatingOptions {
     hoverColor?: string,
     backgroundColor?: string,
     minRating?: number,
@@ -18,24 +18,24 @@ enum AskmethatRatingSteps{
 
 export class AskmethatRating {
     //this is the container to create the ratings element
-    private _parentElement: HTMLDivElement;
-    private _value : number;
-    private _styleSheet : any;
-    private _changeEvent: CustomEvent;
+    private parentElement: HTMLDivElement;
+    private pValue : number;
+    private styleSheet : any;
+    private changeEvent: CustomEvent;
 
     get value():number {
-        return this._value;
+        return this.pValue;
     }
-    set value(_value:number) {
-        if(_value < this._defaultOptions.minRating)
+    set value(value:number) {
+        if(value < this._defaultOptions.minRating)
             throw Error("New value cannot be less than min rating value");
-        this._value = _value;
+        this.pValue = value;
 
-        this.render(_value);
+        this.render(this.pValue);
     }
 
     //default options
-    private _defaultOptions: IAskmethatRatingOptions =
+    private _defaultOptions: AskmethatRatingOptions =
     {
         hoverColor: '#ffff66',
         backgroundColor: '#e5e500',
@@ -46,12 +46,12 @@ export class AskmethatRating {
         step: AskmethatRatingSteps.DecimalStep
     };
 
-    get defaultOptions():IAskmethatRatingOptions {
+    get defaultOptions():AskmethatRatingOptions {
         return this._defaultOptions;
     }
 
-    constructor(element: HTMLDivElement, defaultValue?: number, options?: IAskmethatRatingOptions) {
-        this._parentElement = element;
+    constructor(element: HTMLDivElement, defaultValue?: number, options?: AskmethatRatingOptions) {
+        this.parentElement = element;
 
         //override default options
         if(options)
@@ -64,7 +64,7 @@ export class AskmethatRating {
          //if is not readonly, activate events
          if(!this._defaultOptions.readonly){
             //define events
-            this._parentElement.addEventListener("mouseleave",(e) => this.onMouseLeave(e));
+            this.parentElement.addEventListener("mouseleave",(e) => this.onMouseLeave(e));
         }
 
         this.render(defaultValue);
@@ -77,7 +77,7 @@ export class AskmethatRating {
     * This will render the rating
     */
     public render(value: number = this._defaultOptions.minRating) {
-        this._parentElement.innerHTML = '';
+        this.parentElement.innerHTML = '';
         for (let i = 1; i <= this._defaultOptions.maxRating; i++) {
             let spanUnder = document.createElement("span");
             let spanOuter = document.createElement("span");
@@ -120,7 +120,7 @@ export class AskmethatRating {
             
 
             //set default value
-            this._value = value;
+            this.pValue = value;
 
             //if is not readonly, activate events
             if(!this._defaultOptions.readonly){
@@ -130,7 +130,7 @@ export class AskmethatRating {
             }
             
             spanOuter.appendChild(spanUnder);
-            this._parentElement.appendChild(spanOuter);
+            this.parentElement.appendChild(spanOuter);
 
         }
 
@@ -155,19 +155,19 @@ export class AskmethatRating {
 
         //delete current selected
         if(this.value !== 0){
-            this._parentElement.querySelector(".amt-selected").classList.remove("amt-selected");
+            this.parentElement.querySelector(".amt-selected").classList.remove("amt-selected");
         }
       
-        this._value = value;
+        this.pValue = value;
 
         //set selected if is not 0
         if(this.value != 0)
             span.className += " amt-selected";       
 
         
-        this._changeEvent = new CustomEvent("amt-change", { 'detail' : this.value})
-        this._changeEvent.initEvent("amt-change", false, true);
-        this._parentElement.dispatchEvent(this._changeEvent);
+        this.changeEvent = new CustomEvent("amt-change", { 'detail' : this.value})
+        this.changeEvent.initEvent("amt-change", false, true);
+        this.parentElement.dispatchEvent(this.changeEvent);
     }
 
     /**
@@ -231,7 +231,7 @@ export class AskmethatRating {
             if(i < this._defaultOptions.minRating){
                 continue;
             }
-            var span = <HTMLSpanElement> this._parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
+            var span = <HTMLSpanElement> this.parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
             //all span before minRating should be direclty active
             var underSpan = <HTMLSpanElement> span.querySelector(".amt-rating-under");
             if (i <= value) {

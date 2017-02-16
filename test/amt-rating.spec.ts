@@ -24,6 +24,7 @@ class TestPrivates extends AskmethatRating{
 var subject : AskmethatRating;
 var div : HTMLDivElement;
 var defaultValue : number = 1;
+
 beforeEach(function () {
      div = <HTMLDivElement>document.getElementById("amtTest");
     if(div){
