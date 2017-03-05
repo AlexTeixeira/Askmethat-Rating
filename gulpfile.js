@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minify = require('gulp-minify-css');
 var coveralls = require('gulp-coveralls');
+var merge = require("merge");
 
 var fs = require("fs");
 
@@ -14,7 +15,7 @@ var pathToKarmaConf = __dirname.replace('/gulp', '');
 
 var paths = {
     npm: 'node_modules/',
-    tsSource: 'src/ts/*.ts',
+    tsSource: 'src/ts/amt-rating.ts',
     tsOutput: "dist/js/amt-rating.js",
     tsOutputMin: "amt-rating.min.js",
     scssSource: "src/sass/*.scss",
@@ -24,8 +25,13 @@ var tsCompilerConfig = ts.createProject('tsconfig.json');
 
 gulp.task("ts-compile", function () {
     var tsResult = gulp.src(paths.tsSource)
-        .pipe(tsCompilerConfig());
-    return tsResult.js.pipe(gulp.dest("dist/js"));
+        .pipe(tsCompilerConfig(      
+        ));
+
+    return merge([
+        tsResult.dts.pipe(gulp.dest('dist/definition')),
+        tsResult.js.pipe(gulp.dest('dist/js'))
+    ]);
 });
 
 gulp.task('sass', function () {

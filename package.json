@@ -18,6 +18,7 @@
     "font-awesome",
     "glyphicon"
   ],
+  "main": "dist/js/amt-rating.js",
   "license": "MIT",
   "version": "0.1.2",
   "devDependencies": {

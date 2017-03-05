@@ -53,6 +53,12 @@ When the plugin will be stable, it will be available to download it with npm.
 npm i askmethat-rating
 ```
 
+### From Bower
+
+```javascript
+bower install askmethat-rating
+```
+
 
 ## Example
 
@@ -109,14 +115,6 @@ You just need to give the identifier or a class to get the value.
 ```javascript
 console.log(AskmethatRating.value("#amtRating")); 
 ```
-
-
-## Next steps
-
-The next steps are :
-
-1. Bind a change value to allow user to add custom code when code is changing
-2. Allow the plugins to use jQuery for the one user of this plugin
 
 ## Contributors
 

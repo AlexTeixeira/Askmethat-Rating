@@ -1,31 +1,66 @@
+//This enum set the step for the rating
+export enum AskmethatRatingSteps{
+    /**
+     * Step 0.1 per 0.1
+     */
+    DecimalStep,
+    /**
+     * Step 0.5 per 0.5
+     */
+    HalfStep,
+    /**
+     * Step 1 per 1
+     */
+    OnePerOneStep 
+}
 //this is the available options for the plugin
 export interface AskmethatRatingOptions {
     hoverColor?: string,
+    /** 
+     * Color when the rating is not hovered
+     */
     backgroundColor?: string,
+     /** 
+     * Mininmum rating that the user can set
+     */
     minRating?: number,
+    /**
+     * Maximum rating that the plugin display
+     */
     maxRating?: number,
+    /**
+     * Class to display as rating (FontAwesome or Rating for exemple)
+     */
     fontClass: string,
+    /**
+     * Set the rating to readonly
+     */
     readonly: boolean,
+    /** 
+    * The stepping for the rating
+    */
     step: AskmethatRatingSteps
 }
-
-//This enum set the step for the rating
-enum AskmethatRatingSteps{
-    DecimalStep, //0.1 step
-    HalfStep, //0.5 step
-    OnePerOneStep //1 step
-}
-
-export class AskmethatRating {
+export default class AskmethatRating {
     //this is the container to create the ratings element
     private parentElement: HTMLDivElement;
     private pValue : number;
     private styleSheet : any;
     private changeEvent: CustomEvent;
 
+    /**
+     * @function get the current value for the rating
+     */
     get value():number {
         return this.pValue;
     }
+    /**
+     * @function set a new value for the rating
+     * 
+     * @param _value this is the new value you want to set to the rating
+     * @returns the current number
+     */
+
     set value(value:number) {
         if(value < this._defaultOptions.minRating)
             throw Error("New value cannot be less than min rating value");
@@ -34,6 +69,9 @@ export class AskmethatRating {
         this.render(this.pValue);
     }
 
+    /**
+     * Default option base on @type IAskmethatRatingOptions
+     */
     //default options
     private _defaultOptions: AskmethatRatingOptions =
     {
@@ -46,11 +84,23 @@ export class AskmethatRating {
         step: AskmethatRatingSteps.DecimalStep
     };
 
-    get defaultOptions():AskmethatRatingOptions {
+    /**
+     * @function get the default option for the rating
+     * 
+     * @return  options based on @type AskmethatRatingOptions
+     */
+    get defaultOptions() : any {
         return this._defaultOptions;
     }
 
-    constructor(element: HTMLDivElement, defaultValue?: number, options?: AskmethatRatingOptions) {
+    /**
+     * constructor with div element, default rating value & default options
+     * 
+     * @param element This is the html container for the rating elements
+     * @param defaultValue Default value set when the plugin render the rating
+     * @param options Default option base on AskmethatRatingOptions type
+     */
+    constructor(element: HTMLDivElement, defaultValue?: number, options?: any) {
         this.parentElement = element;
 
         //override default options
@@ -68,14 +118,13 @@ export class AskmethatRating {
         }
 
         this.render(defaultValue);
-
-        
-
     }
 
-    /*
-    * This will render the rating
-    */
+    /**
+     * render a new rating, by default value is the minRating
+     * 
+     * @param value this is the default value set when the plugin is rendered, by default IAskmethatRatingOptions.minRating
+     */
     public render(value: number = this._defaultOptions.minRating) {
         this.parentElement.innerHTML = '';
         for (let i = 1; i <= this._defaultOptions.maxRating; i++) {
@@ -276,3 +325,5 @@ export class AskmethatRating {
     }
     
 }
+
+

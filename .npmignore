@@ -9,7 +9,8 @@ typings/
 src/
 test/
 *.yml
-./*.js
+gulpfile.json
+karma.config.js
 *.json
 *log
 *.lock
