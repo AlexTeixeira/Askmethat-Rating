@@ -18,7 +18,6 @@
     "font-awesome",
     "glyphicon"
   ],
-  "main": "dist/js/amt-rating.js",
   "license": "MIT",
   "version": "0.1.2",
   "devDependencies": {
@@ -43,8 +42,23 @@
     "mocha": "^3.2.0",
     "typescript": "^2.1.4"
   },
-  "dependencies": {},
-  "scripts": {
-    "test": "gulp coveralls"
-  }
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "less/knackLESS.zip",
+    "test",
+    "README.md",
+    "src",
+    "typings",
+    "docs",
+    "bower.json",
+    "package.json",
+    "typings.json",
+    "tsconfig.json",
+    "./*.yml",
+    "gulpfile.js",
+    "karma.config.js",
+    "yarn.lock"
+  ],
+  "main": "dist/"
 }
