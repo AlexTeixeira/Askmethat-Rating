@@ -56,7 +56,7 @@ npm i askmethat-rating
 ### From Bower
 
 ```javascript
-npm i askmethat-rating
+bower install askmethat-rating
 ```
 
 
