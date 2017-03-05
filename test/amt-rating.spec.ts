@@ -1,9 +1,10 @@
 /// <reference path="../typings/globals/mocha/index.d.ts" />
 /// <reference path="../typings/modules/chai/index.d.ts" />
 
+
 import { expect, assert } from 'chai';
 
-import {AskmethatRating} from '../src/ts/amt-rating';
+import AskmethatRating from '../src/ts/amt-rating';
 
 
 class TestPrivates extends AskmethatRating{

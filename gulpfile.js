@@ -15,7 +15,7 @@ var pathToKarmaConf = __dirname.replace('/gulp', '');
 
 var paths = {
     npm: 'node_modules/',
-    tsSource: 'src/ts/*.ts',
+    tsSource: 'src/ts/amt-rating.ts',
     tsOutput: "dist/js/amt-rating.js",
     tsOutputMin: "amt-rating.min.js",
     scssSource: "src/sass/*.scss",

@@ -1,12 +1,20 @@
-//this is the available options for the plugin
-<<<<<<< HEAD
-export interface IAskmethatRatingOptions {
-    /** 
-     * Color when the rating is hovered
+//This enum set the step for the rating
+export enum AskmethatRatingSteps{
+    /**
+     * Step 0.1 per 0.1
      */
-=======
+    DecimalStep,
+    /**
+     * Step 0.5 per 0.5
+     */
+    HalfStep,
+    /**
+     * Step 1 per 1
+     */
+    OnePerOneStep 
+}
+//this is the available options for the plugin
 export interface AskmethatRatingOptions {
->>>>>>> 41600ba86b0e64fb3b3d87115cbf59ad09d7e18b
     hoverColor?: string,
     /** 
      * Color when the rating is not hovered
@@ -33,24 +41,7 @@ export interface AskmethatRatingOptions {
     */
     step: AskmethatRatingSteps
 }
-
-//This enum set the step for the rating
-export enum AskmethatRatingSteps{
-    /**
-     * Step 0.1 per 0.1
-     */
-    DecimalStep,
-    /**
-     * Step 0.5 per 0.5
-     */
-    HalfStep,
-    /**
-     * Step 1 per 1
-     */
-    OnePerOneStep 
-}
-
-export class AskmethatRating {
+export default class AskmethatRating {
     //this is the container to create the ratings element
     private parentElement: HTMLDivElement;
     private pValue : number;
@@ -63,35 +54,26 @@ export class AskmethatRating {
     get value():number {
         return this.pValue;
     }
-<<<<<<< HEAD
-
     /**
      * @function set a new value for the rating
      * 
      * @param _value this is the new value you want to set to the rating
      * @returns the current number
      */
-    set value(_value:number) {
-        if(_value < this._defaultOptions.minRating)
-=======
+
     set value(value:number) {
         if(value < this._defaultOptions.minRating)
->>>>>>> 41600ba86b0e64fb3b3d87115cbf59ad09d7e18b
             throw Error("New value cannot be less than min rating value");
         this.pValue = value;
 
         this.render(this.pValue);
     }
 
-<<<<<<< HEAD
     /**
      * Default option base on @type IAskmethatRatingOptions
      */
-    private _defaultOptions: IAskmethatRatingOptions =
-=======
     //default options
     private _defaultOptions: AskmethatRatingOptions =
->>>>>>> 41600ba86b0e64fb3b3d87115cbf59ad09d7e18b
     {
         hoverColor: '#ffff66',
         backgroundColor: '#e5e500',
@@ -102,13 +84,12 @@ export class AskmethatRating {
         step: AskmethatRatingSteps.DecimalStep
     };
 
-<<<<<<< HEAD
     /**
      * @function get the default option for the rating
      * 
-     * @return  options based on @type IAskmethatRatingOptions
+     * @return  options based on @type AskmethatRatingOptions
      */
-    get defaultOptions():IAskmethatRatingOptions {
+    get defaultOptions() : any {
         return this._defaultOptions;
     }
 
@@ -117,18 +98,10 @@ export class AskmethatRating {
      * 
      * @param element This is the html container for the rating elements
      * @param defaultValue Default value set when the plugin render the rating
-     * @param options Default option base on IAskmethatRatingOptions type
+     * @param options Default option base on AskmethatRatingOptions type
      */
-    constructor(element: HTMLDivElement, defaultValue?: number, options?: IAskmethatRatingOptions) {
-        this._parentElement = element;
-=======
-    get defaultOptions():AskmethatRatingOptions {
-        return this._defaultOptions;
-    }
-
-    constructor(element: HTMLDivElement, defaultValue?: number, options?: AskmethatRatingOptions) {
+    constructor(element: HTMLDivElement, defaultValue?: number, options?: any) {
         this.parentElement = element;
->>>>>>> 41600ba86b0e64fb3b3d87115cbf59ad09d7e18b
 
         //override default options
         if(options)
@@ -352,3 +325,5 @@ export class AskmethatRating {
     }
     
 }
+
+
