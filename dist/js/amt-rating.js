@@ -139,6 +139,10 @@ var AskmethatRating = (function () {
             spanOuter.appendChild(spanUnder);
             this.parentElement.appendChild(spanOuter);
         }
+        var numberInput = document.createElement("input");
+        numberInput.setAttribute("type", "hidden");
+        numberInput.setAttribute("value", this.pValue.toString());
+        this.parentElement.appendChild(numberInput);
     };
     /**
     * @function when a rating is clicked
@@ -163,6 +167,9 @@ var AskmethatRating = (function () {
         this.changeEvent = new CustomEvent("amt-change", { 'detail': this.value });
         this.changeEvent.initEvent("amt-change", false, true);
         this.parentElement.dispatchEvent(this.changeEvent);
+        //update input
+        var input = this.parentElement.getElementsByTagName("input")[0];
+        input.value = this.pValue.toString();
     };
     /**
     * @function Calculate the value according to the step provided in options

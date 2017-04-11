@@ -39,7 +39,8 @@ export interface AskmethatRatingOptions {
     /** 
     * The stepping for the rating
     */
-    step: AskmethatRatingSteps
+    step: AskmethatRatingSteps,
+
 }
 export default class AskmethatRating {
     //this is the container to create the ratings element
@@ -181,9 +182,14 @@ export default class AskmethatRating {
             spanOuter.appendChild(spanUnder);
             this.parentElement.appendChild(spanOuter);
 
+            //create input type number
+           
         }
 
-        
+        var numberInput = <HTMLInputElement>document.createElement("input");
+        numberInput.setAttribute("type", "hidden");
+        numberInput.setAttribute("value",this.pValue.toString());
+        this.parentElement.appendChild(numberInput)
     }
 
     /**
@@ -217,6 +223,10 @@ export default class AskmethatRating {
         this.changeEvent = new CustomEvent("amt-change", { 'detail' : this.value})
         this.changeEvent.initEvent("amt-change", false, true);
         this.parentElement.dispatchEvent(this.changeEvent);
+
+        //update input
+        var input = <HTMLInputElement>this.parentElement.getElementsByTagName("input")[0];
+        input.value = this.pValue.toString();
     }
 
     /**

@@ -216,6 +216,13 @@ describe('#display', () => {
         expect(val).to.be.equal(defaultValue);
      });
 
+     it("Expecting to have the same value for input & plugin", () => {
+        var val =  subject.value;
+        var div = document.getElementById("amtTest");
+        var inputVal = div.getElementsByTagName("input")[0].value;
+        
+        expect(val.toString()).to.be.equal(inputVal);
+     });
   });
 
 
