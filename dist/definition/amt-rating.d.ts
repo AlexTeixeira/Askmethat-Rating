@@ -41,12 +41,18 @@ export interface AskmethatRatingOptions {
     * The stepping for the rating
     */
     step: AskmethatRatingSteps;
+    /**
+     * Input name (Default is AskmthatRating)
+     */
+    inputName: string;
 }
 export default class AskmethatRating {
     private parentElement;
     private pValue;
     private styleSheet;
     private changeEvent;
+    private ratingClick;
+    private mouseMove;
     /**
      * @function get the current value for the rating
      */
@@ -108,6 +114,11 @@ export default class AskmethatRating {
     * @param  {number} current :  value needed for the if
     */
     protected setOrUnsetActive(value: number): void;
+    /**
+     * Check if disabled attribute is added or removed from the input
+     * Update readonly status if needed for the rating
+     */
+    private mutationEvent();
     /**
     * @function static method to retrieve with identifier the value
     * @param  {string} identifier: string container identifier
