@@ -41,7 +41,7 @@ export interface AskmethatRatingOptions {
     */
     step: AskmethatRatingSteps,
     /**
-     * Input name (Default is AskmthatRating)
+     * Input name (Default is AskmethatRating)
      */
     inputName: string
 

@@ -1,15 +1,15 @@
 # askmethat-rating
 
 
-###develop:
+### develop:
 [![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=develop)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=develop)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=develop)
 
-###master:
+### master:
 [![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=master)
-[![npm version](https://badge.fury.io/js/askmethat-rating.svg)](https://badge.fury.io/js/askmethat-rating)
-
+[![npm version](https://badge.fury.io/js/askmethat-rating.svg)](https://www.npmjs.com/package/askmethat-rating)
+[![Bower version](https://badge.fury.io/bo/askmethat-rating.svg)](https://github.com/AlexTeixeira/Askmethat-Rating)
 
 ## Synopsis
 

@@ -14,7 +14,7 @@ var AskmethatRatingSteps;
      * Step 1 per 1
      */
     AskmethatRatingSteps[AskmethatRatingSteps["OnePerOneStep"] = 2] = "OnePerOneStep";
-})(AskmethatRatingSteps = AskmethatRatingSteps || (AskmethatRatingSteps = {}));
+})(AskmethatRatingSteps = exports.AskmethatRatingSteps || (exports.AskmethatRatingSteps = {}));
 var AskmethatRating = (function () {
     /**
      * constructor with div element, default rating value & default options
@@ -314,3 +314,5 @@ var AskmethatRating = (function () {
     };
     return AskmethatRating;
 }());
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = AskmethatRating;
