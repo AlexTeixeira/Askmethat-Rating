@@ -14,7 +14,7 @@ var AskmethatRatingSteps;
      * Step 1 per 1
      */
     AskmethatRatingSteps[AskmethatRatingSteps["OnePerOneStep"] = 2] = "OnePerOneStep";
-})(AskmethatRatingSteps = AskmethatRatingSteps || (AskmethatRatingSteps = {}));
+})(AskmethatRatingSteps = exports.AskmethatRatingSteps || (exports.AskmethatRatingSteps = {}));
 var AskmethatRating = (function () {
     /**
      * constructor with div element, default rating value & default options
@@ -36,12 +36,21 @@ var AskmethatRating = (function () {
             maxRating: 5,
             fontClass: "fa fa-star",
             readonly: false,
-            step: AskmethatRatingSteps.DecimalStep
+            step: AskmethatRatingSteps.DecimalStep,
+            inputName: "AskmethatRating"
         };
         this.parentElement = element;
         //override default options
-        if (options)
-            this._defaultOptions = options;
+        if (options) {
+            this._defaultOptions.hoverColor = options.hoverColor != null ? options.hoverColor : this._defaultOptions.hoverColor;
+            this._defaultOptions.backgroundColor = options.backgroundColor != null ? options.backgroundColor : this._defaultOptions.backgroundColor;
+            this._defaultOptions.minRating = options.minRating != null ? options.minRating : this._defaultOptions.minRating;
+            this._defaultOptions.maxRating = options.maxRating != null ? options.maxRating : this._defaultOptions.maxRating;
+            this._defaultOptions.fontClass = options.fontClass != null ? options.fontClass : this._defaultOptions.fontClass;
+            this._defaultOptions.readonly = options.readonly != null ? options.readonly : this._defaultOptions.readonly;
+            this._defaultOptions.step = options.step != null ? options.step : this._defaultOptions.step;
+            this._defaultOptions.inputName = options.inputName != null ? options.inputName : this._defaultOptions.inputName;
+        }
         if (this._defaultOptions.minRating > defaultValue) {
             throw new Error("Default value should be higher than minRating options");
         }
@@ -50,6 +59,8 @@ var AskmethatRating = (function () {
             //define events
             this.parentElement.addEventListener("mouseleave", function (e) { return _this.onMouseLeave(e); });
         }
+        this.mouseMove = this.onMouseMove.bind(this);
+        this.ratingClick = this.onRatingClick.bind(this);
         this.render(defaultValue);
     }
     Object.defineProperty(AskmethatRating.prototype, "value", {
@@ -92,7 +103,6 @@ var AskmethatRating = (function () {
      * @param value this is the default value set when the plugin is rendered, by default IAskmethatRatingOptions.minRating
      */
     AskmethatRating.prototype.render = function (value) {
-        var _this = this;
         if (value === void 0) { value = this._defaultOptions.minRating; }
         this.parentElement.innerHTML = '';
         for (var i = 1; i <= this._defaultOptions.maxRating; i++) {
@@ -133,12 +143,19 @@ var AskmethatRating = (function () {
             //if is not readonly, activate events
             if (!this._defaultOptions.readonly) {
                 //define events
-                spanOuter.addEventListener("click", function (e) { return _this.onRatingClick(e); });
-                spanOuter.addEventListener("mousemove", function (e) { return _this.onMouseMove(e); });
+                spanOuter.addEventListener("click", this.ratingClick);
+                spanOuter.addEventListener("mousemove", this.mouseMove);
             }
             spanOuter.appendChild(spanUnder);
             this.parentElement.appendChild(spanOuter);
         }
+        //create input type number
+        var numberInput = document.createElement("input");
+        numberInput.setAttribute("type", "hidden");
+        numberInput.setAttribute("value", this.pValue.toString());
+        numberInput.setAttribute("name", this._defaultOptions.inputName);
+        this.parentElement.appendChild(numberInput);
+        this.mutationEvent();
     };
     /**
     * @function when a rating is clicked
@@ -163,6 +180,9 @@ var AskmethatRating = (function () {
         this.changeEvent = new CustomEvent("amt-change", { 'detail': this.value });
         this.changeEvent.initEvent("amt-change", false, true);
         this.parentElement.dispatchEvent(this.changeEvent);
+        //update input
+        var input = this.parentElement.getElementsByTagName("input")[0];
+        input.value = this.pValue.toString();
     };
     /**
     * @function Calculate the value according to the step provided in options
@@ -244,6 +264,40 @@ var AskmethatRating = (function () {
         }
     };
     /**
+     * Check if disabled attribute is added or removed from the input
+     * Update readonly status if needed for the rating
+     */
+    AskmethatRating.prototype.mutationEvent = function () {
+        var _this = this;
+        var target = this.parentElement.querySelector("input");
+        // create an observer instance
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.attributeName === "disabled") {
+                    var target = mutation.target;
+                    var hasDisabled = target.hasAttribute("disabled");
+                    var spanOuters = _this.parentElement.querySelectorAll(".amt-rating-elem");
+                    if (hasDisabled) {
+                        for (var i = 0; i < spanOuters.length; i++) {
+                            spanOuters[i].removeEventListener("click", _this.ratingClick);
+                            spanOuters[i].removeEventListener("mousemove", _this.mouseMove);
+                        }
+                    }
+                    else {
+                        for (var i = 0; i < spanOuters.length; i++) {
+                            spanOuters[i].addEventListener("click", _this.ratingClick);
+                            spanOuters[i].addEventListener("mousemove", _this.mouseMove);
+                        }
+                    }
+                }
+            });
+        });
+        // configuration of the observer:
+        var config = { attributes: true, childList: true, characterData: true };
+        // pass in the target node, as well as the observer options
+        observer.observe(target, config);
+    };
+    /**
     * @function static method to retrieve with identifier the value
     * @param  {string} identifier: string container identifier
     * @return {number} current rating
@@ -260,3 +314,5 @@ var AskmethatRating = (function () {
     };
     return AskmethatRating;
 }());
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = AskmethatRating;

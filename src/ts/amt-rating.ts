@@ -39,7 +39,12 @@ export interface AskmethatRatingOptions {
     /** 
     * The stepping for the rating
     */
-    step: AskmethatRatingSteps
+    step: AskmethatRatingSteps,
+    /**
+     * Input name (Default is AskmethatRating)
+     */
+    inputName: string
+
 }
 export default class AskmethatRating {
     //this is the container to create the ratings element
@@ -47,6 +52,9 @@ export default class AskmethatRating {
     private pValue : number;
     private styleSheet : any;
     private changeEvent: CustomEvent;
+    private ratingClick : any;
+    private mouseMove : any;
+
 
     /**
      * @function get the current value for the rating
@@ -81,7 +89,8 @@ export default class AskmethatRating {
         maxRating: 5,
         fontClass: "fa fa-star",
         readonly: false,
-        step: AskmethatRatingSteps.DecimalStep
+        step: AskmethatRatingSteps.DecimalStep,
+        inputName: "AskmethatRating"
     };
 
     /**
@@ -104,8 +113,17 @@ export default class AskmethatRating {
         this.parentElement = element;
 
         //override default options
-        if(options)
-            this._defaultOptions = options;
+        if(options){
+            this._defaultOptions.hoverColor = options.hoverColor != null ? options.hoverColor :  this._defaultOptions.hoverColor;
+            this._defaultOptions.backgroundColor = options.backgroundColor != null ? options.backgroundColor :  this._defaultOptions.backgroundColor;
+            this._defaultOptions.minRating = options.minRating != null ? options.minRating :  this._defaultOptions.minRating;
+            this._defaultOptions.maxRating = options.maxRating != null ? options.maxRating :  this._defaultOptions.maxRating;
+            this._defaultOptions.fontClass = options.fontClass != null ? options.fontClass :  this._defaultOptions.fontClass;
+            this._defaultOptions.readonly = options.readonly != null ? options.readonly :  this._defaultOptions.readonly;
+            this._defaultOptions.step = options.step != null ? options.step :  this._defaultOptions.step;
+            this._defaultOptions.inputName=  options.inputName != null ? options.inputName :  this._defaultOptions.inputName;
+             
+        }
 
         if(this._defaultOptions.minRating > defaultValue){
             throw new Error("Default value should be higher than minRating options");
@@ -116,8 +134,14 @@ export default class AskmethatRating {
             //define events
             this.parentElement.addEventListener("mouseleave",(e) => this.onMouseLeave(e));
         }
+        
+        this.mouseMove = this.onMouseMove.bind(this);
+        this.ratingClick = this.onRatingClick.bind(this);
+
 
         this.render(defaultValue);
+        
+
     }
 
     /**
@@ -174,16 +198,24 @@ export default class AskmethatRating {
             //if is not readonly, activate events
             if(!this._defaultOptions.readonly){
                 //define events
-                spanOuter.addEventListener("click",(e) => this.onRatingClick(e));
-                spanOuter.addEventListener("mousemove",(e) => this.onMouseMove(e));
+                spanOuter.addEventListener("click",this.ratingClick);
+                spanOuter.addEventListener("mousemove",this.mouseMove);
             }
             
             spanOuter.appendChild(spanUnder);
             this.parentElement.appendChild(spanOuter);
 
+           
         }
-
         
+        //create input type number
+        var numberInput = <HTMLInputElement>document.createElement("input");
+        numberInput.setAttribute("type", "hidden");
+        numberInput.setAttribute("value",this.pValue.toString());
+        numberInput.setAttribute("name", this._defaultOptions.inputName);
+        this.parentElement.appendChild(numberInput);
+
+        this.mutationEvent();
     }
 
     /**
@@ -217,6 +249,10 @@ export default class AskmethatRating {
         this.changeEvent = new CustomEvent("amt-change", { 'detail' : this.value})
         this.changeEvent.initEvent("amt-change", false, true);
         this.parentElement.dispatchEvent(this.changeEvent);
+
+        //update input
+        var input = <HTMLInputElement>this.parentElement.getElementsByTagName("input")[0];
+        input.value = this.pValue.toString();
     }
 
     /**
@@ -306,6 +342,43 @@ export default class AskmethatRating {
     }
 
     /**
+     * Check if disabled attribute is added or removed from the input
+     * Update readonly status if needed for the rating
+     */
+    private mutationEvent(){
+        let target : HTMLInputElement = <HTMLInputElement>this.parentElement.querySelector("input");
+
+        // create an observer instance
+       var observer = new MutationObserver((mutations : MutationRecord[]) => {
+            mutations.forEach((mutation) => {
+                if(mutation.attributeName === "disabled"){
+                    var target : HTMLElement = <HTMLElement>mutation.target;
+                    var hasDisabled = target.hasAttribute("disabled")
+                    var spanOuters = this.parentElement.querySelectorAll(".amt-rating-elem");
+
+                    if(hasDisabled){
+                        for(var i=0;i < spanOuters.length; i++){
+                            spanOuters[i].removeEventListener("click", this.ratingClick);
+                            spanOuters[i].removeEventListener("mousemove", this.mouseMove);                    
+                        }                     
+                    } else {
+                        for(var i=0;i < spanOuters.length; i++){
+                            spanOuters[i].addEventListener("click", this.ratingClick);
+                            spanOuters[i].addEventListener("mousemove", this.mouseMove);             
+                        }
+                    }
+
+                } 
+            });
+        });
+
+        // configuration of the observer:
+        var config = { attributes: true, childList: true, characterData: true };
+        
+        // pass in the target node, as well as the observer options
+        observer.observe(target, config);
+    }
+    /**
     * @function static method to retrieve with identifier the value 
     * @param  {string} identifier: string container identifier
     * @return {number} current rating
@@ -323,6 +396,7 @@ export default class AskmethatRating {
 
         return value;
     }
+
     
 }
 

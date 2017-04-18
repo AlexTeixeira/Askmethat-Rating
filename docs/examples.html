@@ -45,14 +45,39 @@
   </header>
   <section>
     <div class="container">
+      <!-- Rating with default options-->
       <div class="row">
         <div class="col-12">
           <h1>Basic Examples</h1>
           <hr>
         </div>
+         <div class="col-12">
+          <h4 class="second-title">Simple select rating with default options</h4>
+          <p>Simple clickable rating</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="myBasicRating"></div>
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                var div = document.getElementById("myBasicRatingDefault");
+                var amtRating = new AskmethatRating(div, 2);              
+                </code>
+            </pre>
+          </div>
+          <div class="card-block" style="font-size:2em;">
+            <div id="myBasicRatingDefault" class="text-center"></div>
+          </div>
+        </div>
         <!-- First examples !-->
         <div class="col-12">
-          <h4 class="second-title">Simple select rating</h4>
+          <h4 class="second-title">Simple select rating with custom options</h4>
           <p>Simple clickable rating</p>
         </div>
         <div class="card">
@@ -73,7 +98,8 @@
                     minRating: 1,
                     maxRating: 5,
                     readonly: false,
-                    step: AskmethatRatingSteps["OnePerOneStep"]                                       
+                    step: AskmethatRatingSteps["OnePerOneStep"],
+                    inputName: "MyRating"                                    
                     };
 
                 var div = document.getElementById("myBasicRating");
@@ -143,28 +169,15 @@
             <h6 class="code-title">JavaScript</h6>
             <pre class="prettyprint">
               <code class="language-javascript">
-                  var options1 = {
-                      backgroundColor : "#e5e500",
-                      hoverColor: "#ffff66",
-                      fontClass: "fa fa-cloud",
-                      minRating: 1,
-                      maxRating: 5,
-                      readonly: false,
-                      step: AskmethatRatingSteps["OnePerOneStep"]
-                      
-                      
-                      };
-                  var options2 = {
-                      backgroundColor : "#e5e500",
-                      hoverColor: "#ffff66",
-                      fontClass: "octicon octicon-clippy",
-                      minRating: 1,
-                      maxRating: 5,
-                      readonly: false,
-                      step: AskmethatRatingSteps["OnePerOneStep"]
-                      
-                      
-                      };
+                  var options1 = 
+                  {
+                    fontClass: "fa fa-cloud"           
+                  };
+
+                  var options2 = 
+                  {
+                    fontClass: "octicon octicon-clippy",
+                  };
 
                   var div = document.getElementById("myFontAwesomeRating");
                   var amtRating1 = new AskmethatRating(div, 1, options1);   
@@ -202,33 +215,18 @@
             <h6 class="code-title">JavaScript</h6>
             <pre class="prettyprint">
               <code class="language-javascript">
-                  var decimalOpt = {
-                    backgroundColor : "#e5e500",
-                    hoverColor: "#ffff66",
-                    fontClass: "fa fa-star",
-                    minRating: 1,
-                    maxRating: 5,
-                    readonly: false,
+                  var decimalOpt = 
+                  {
                     step: AskmethatRatingSteps["DecimalStep"]
                   };
 
-                  var halpOpt = {
-                    backgroundColor : "#e5e500",
-                    hoverColor: "#ffff66",
-                    fontClass: "fa fa-star",
-                    minRating: 1,
-                    maxRating: 5,
-                    readonly: false,
+                  var halpOpt = 
+                  {
                     step: AskmethatRatingSteps["HalfStep"]
                   };
 
-                  var FullOpt = {
-                    backgroundColor : "#e5e500",
-                    hoverColor: "#ffff66",
-                    fontClass: "fa fa-star",
-                    minRating: 1,
-                    maxRating: 5,
-                    readonly: false,
+                  var FullOpt = 
+                  {
                     step: AskmethatRatingSteps["OnePerOneStep"]
                   };
 
@@ -265,15 +263,10 @@
             <h6 class="code-title">JavaScript</h6>
             <pre class="prettyprint">
               <code class="language-javascript">
-                var options = {
-                    backgroundColor : "#e5e500",
-                    hoverColor: "#ffff66",
-                    fontClass: "fa fa-star",
-                    minRating: 1,
-                    maxRating: 5,
+                var options = 
+                {
                     readonly: true,
-                    step: AskmethatRatingSteps["DecimalStep"]                                       
-                    };
+                };
 
                 var div = document.getElementById("readonlyRating");
                 var amtRating = new AskmethatRating(div, 3.2, options);              
@@ -347,6 +340,12 @@
 
 
 <script>
+
+  //default options
+  var div = document.getElementById("myBasicRatingDefault");
+  var defaultAmtRating = new AskmethatRating(div, 2);
+
+
   //Basic Example
    var options = {
         backgroundColor : "#e5e500",
@@ -355,8 +354,8 @@
         minRating: 1,
         maxRating: 5,
         readonly: false,
-        step: AskmethatRatingSteps["OnePerOneStep"]        
-      
+        step: AskmethatRatingSteps["OnePerOneStep"],
+        inputName: "MyRating"                                               
       };
 
 
@@ -372,23 +371,11 @@
 
 //Fonts example
      var options1 = {
-        backgroundColor : "#e5e500",
-        hoverColor: "#ffff66",
         fontClass: "fa fa-cloud",
-        minRating: 1,
-        maxRating: 5,
-        readonly: false,
-        step: AskmethatRatingSteps["OnePerOneStep"]
      };
         
     var options2 = {
-        backgroundColor : "#e5e500",
-        hoverColor: "#ffff66",
         fontClass: "octicon octicon-clippy",
-        minRating: 1,
-        maxRating: 5,
-        readonly: false,
-        step: AskmethatRatingSteps["OnePerOneStep"]
      };
 
     var div = document.getElementById("myFontAwesomeRating");
@@ -397,35 +384,20 @@
     var amtRating2 = new AskmethatRating(div, 1, options2);      
 
     //step example
-    var decimalOpt = {
-      backgroundColor : "#e5e500",
-      hoverColor: "#ffff66",
-      fontClass: "fa fa-star",
-      minRating: 1,
-      maxRating: 5,
-      readonly: false,
+    var decimalOpt = 
+    {
       step: AskmethatRatingSteps["DecimalStep"]
     };
 
-     var halpOpt = {
-      backgroundColor : "#e5e500",
-      hoverColor: "#ffff66",
-      fontClass: "fa fa-star",
-      minRating: 1,
-      maxRating: 5,
-      readonly: false,
+     var halpOpt = 
+     {
       step: AskmethatRatingSteps["HalfStep"]
-    };
+     };
 
-     var FullOpt = {
-      backgroundColor : "#e5e500",
-      hoverColor: "#ffff66",
-      fontClass: "fa fa-star",
-      minRating: 1,
-      maxRating: 5,
-      readonly: false,
+     var FullOpt = 
+     {
       step: AskmethatRatingSteps["OnePerOneStep"]
-    };
+     };
 
     var div = document.getElementById("minimalStepRating");
     var amtRating1 = new AskmethatRating(div, 1.8, decimalOpt);   
@@ -438,15 +410,10 @@
 
 
     //on change example
-     var options = {
-        backgroundColor : "#e5e500",
-        hoverColor: "#ffff66",
-        fontClass: "fa fa-star",
-        minRating: 1,
-        maxRating: 5,
+     var options = 
+     {
         readonly: true,
-        step: AskmethatRatingSteps["DecimalStep"]                                       
-      };
+     };
 
       var div = document.getElementById("readonlyRating");
       var amtRating = new AskmethatRating(div, 3.2, options);  

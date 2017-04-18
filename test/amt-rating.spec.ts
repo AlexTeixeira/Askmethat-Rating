@@ -46,7 +46,6 @@ beforeEach(function () {
         maxRating: 5,
         readonly: false,
         step: 2
-
       
       };
       subject = new AskmethatRating(div, 1, options);
@@ -62,8 +61,8 @@ describe('#configuration', () => {
         minRating: 1,
         maxRating: 5,
         readonly: false,
-        step: 0
-
+        step: 0,
+        inputName: "AmtRating"
       
       };
       var amt = new AskmethatRating(div, 1, options);
@@ -79,7 +78,8 @@ describe('#configuration', () => {
         minRating: 0,
         maxRating: 5,
         readonly: false,
-        step: 0
+        step: 0,
+        inputName: "AmtRating"
 
       
       };
@@ -91,8 +91,9 @@ describe('#configuration', () => {
         minRating: 0,
         maxRating: 5,
         readonly: false,
-        step: 0
-      
+        step: 0,
+        inputName: "AmtRating2"
+
       };
       var amt1 = new AskmethatRating(div, 1, options1 );
       var amt2 = new AskmethatRating(div, 1, options2 );
@@ -119,9 +120,18 @@ describe('#configuration', () => {
 
      it('expecting have number of spans equal to maxRating', () => {
        
-      var nbSpan = div.children.length;
+      var nbSpan = div.querySelectorAll("span.amt-rating-elem").length;
       expect(nbSpan).to.be.equal(subject.defaultOptions.maxRating);
 
+    });
+
+    it('expecting to have custom input name', () => {
+       var cOptions = {
+        inputName: "toto"
+      };
+      var amt1 = new AskmethatRating(div, 1, cOptions);
+      var inputName = div.querySelector("input").getAttribute("name");
+      expect(amt1.defaultOptions.inputName).deep.equal(inputName);
     });
 
 });
@@ -129,10 +139,6 @@ describe('#configuration', () => {
 describe('#display', () => {
   it('expecting to create multiple span in div', () => {
       expect(div.innerHTML.indexOf("span")).to.be.least(0);
-    });
-
-    it("expecting max number of span", () => {
-      expect(div.childElementCount ).to.be.equal(subject.defaultOptions.maxRating);
     });
 
      it("expecting specific number of actives", () => {
@@ -216,6 +222,13 @@ describe('#display', () => {
         expect(val).to.be.equal(defaultValue);
      });
 
+     it("Expecting to have the same value for input & plugin", () => {
+        var val =  subject.value;
+        var div = document.getElementById("amtTest");
+        var inputVal = div.getElementsByTagName("input")[0].value;
+        
+        expect(val.toString()).to.be.equal(inputVal);
+     });
   });
 
 

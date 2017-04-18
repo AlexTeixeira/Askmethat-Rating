@@ -10,7 +10,7 @@
         {
             "taskName": "default",
             "isBuildCommand": true,
-            "isWatching": true
+            "isBackground": true
         }
     ]
 }
