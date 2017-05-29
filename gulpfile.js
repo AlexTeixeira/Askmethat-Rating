@@ -29,7 +29,7 @@ gulp.task("ts-compile", function () {
         ));
 
     return merge([
-        tsResult.dts.pipe(gulp.dest('dist/definition')),
+        tsResult.dts.pipe(gulp.dest('dist/js')),
         tsResult.js.pipe(gulp.dest('dist/js'))
     ]);
 });

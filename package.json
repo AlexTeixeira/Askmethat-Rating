@@ -19,8 +19,9 @@
     "glyphicon"
   ],
   "main": "dist/js/amt-rating.js",
+  "types": "dist/js/amt-rating.d.ts",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "devDependencies": {
     "arr-flatten": "^1.0.1",
     "chai": "^3.5.0",
