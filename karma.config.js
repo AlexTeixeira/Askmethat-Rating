@@ -26,7 +26,10 @@ module.exports = function (config) {
         reporters: ["progress", 'coverage', "karma-typescript"],
         coverageReporter: {
             dir: 'coverage',
-            type: "lcov"
+            subdir: '.',
+            reporters: [
+                { type: 'html', dir: 'coverage/html' },
+                { type: 'lcov', dir: 'coverage/' }]
         },
         browsers: ["Chrome"],
         port: 9876,

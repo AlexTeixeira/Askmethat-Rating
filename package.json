@@ -26,6 +26,7 @@
     "@types/chai": "^4.0.0",
     "@types/mocha": "^2.2.41",
     "chai": "^3.5.0",
+    "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",
     "istanbul-instrumenter-loader": "^2.0.0",
@@ -54,6 +55,7 @@
     "build:dev": "webpack",
     "build:staging": "webpack -p",
     "build:prod": "npm run build:dev | npm run build:staging",
-    "test": "karma start karma.config.js --single-run"
+    "test": "karma start karma.config.js --single-run",
+    "coveralls" : "cat .\coverage\lcov.info | coveralls"
   }
 }
