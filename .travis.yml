@@ -18,5 +18,5 @@ before_script:
   - npm install -g karma-chrome-launcher
   - npm install -g karma-mocha
   - npm install -g chai
-  - npm build:prod
-  - npm test
+  - npm run build:prod
+  - npm run test
