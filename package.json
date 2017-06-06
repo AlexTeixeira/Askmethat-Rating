@@ -56,6 +56,6 @@
     "build:staging": "webpack -p",
     "build:prod": "npm run build:dev | npm run build:staging",
     "test": "karma start karma.config.js --single-run",
-    "coveralls" : "cat .\coverage\lcov.info | coveralls"
+    "coveralls" : "cat ./coverage/lcov.info | coveralls"
   }
 }
