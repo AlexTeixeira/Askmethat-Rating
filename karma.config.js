@@ -1,27 +1,21 @@
-var webpackConfig = require('./webpack.config.js');
-var path = require('path');
+var webpackConfig = require('./webpack.test.js');
 
 module.exports = function (config) {
     var configuration = {
+        basePath: './',
         browserNoActivityTimeout: 30000,
-        frameworks: ["mocha", "chai"],
+        frameworks: ["mocha", "chai", "karma-typescript"],
         files: [
-            "test/*.spec.ts"
+            "test/amt-rating.spec.ts",
+            "src/ts/amt-rating.ts"
         ],
         preprocessors: {
-            "test/*.spec.ts": ["webpack", "coverage"],
+            'src/ts/amt-rating.ts': ['karma-typescript', "sourcemap", "coverage"],
+            "test/amt-rating.spec.ts": ['karma-typescript', "sourcemap"]
         },
-        mime: {
-            'text/x-typescript': ['ts']
-        },
-        webpack: webpackConfig[0],
+        webpack: webpackConfig,
         webpackMiddleware: {
             stats: "errors-only"
-        },
-        coverageReporter:{
-            reporters:[
-                { type: 'lcov', subdir: '' },
-            ]
         },
         customLaunchers: {
             Chrome_travis_ci: {
@@ -29,14 +23,28 @@ module.exports = function (config) {
                 flags: ['--no-sandbox']
             }
         },
-        reporters: ["progress", "coverage"],
+        reporters: ["progress", 'coverage', "karma-typescript"],
+        coverageReporter: {
+            dir: 'coverage',
+            type: "lcov"
+        },
         browsers: ["Chrome"],
+        port: 9876,
+        colors: true,
+        logLevel: config.LOG_INFO,
+        autoWatch: true,
+        singleRun: true,
+        concurrency: Infinity,
         plugins: [
-            require('karma-webpack'),
             require("karma-mocha"),
             require("karma-chai"),
+            require("karma-webpack"),
             require("karma-coverage"),
-            require("karma-chrome-launcher")]
+            require("karma-chrome-launcher"),
+            require("karma-sourcemap-loader"),
+            require("istanbul-instrumenter-loader"),
+            require("karma-typescript")
+        ]
     };
 
     if (process.env.TRAVIS) {

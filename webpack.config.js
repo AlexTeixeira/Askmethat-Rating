@@ -42,23 +42,23 @@ module.exports = [{
     ],
     module: {
         rules: [{
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: 'ts-loader'
-            }, {
-                test: /\.js$/,
-                exclude: /node_modules/,
+            test: /\.ts$/,
+            exclude: /node_modules/,
+            use: 'ts-loader'
+        }, {
+            test: /\.js$/,
+            exclude: /node_modules/,
 
-            },
-            {
-                enforce: 'pre',
-                test: /\.ts$/,
-                use: "source-map-loader"
-            }, {
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: "source-map-loader"
-            },
+        },
+        {
+            enforce: 'pre',
+            test: /\.ts$/,
+            use: "source-map-loader"
+        }, {
+            enforce: 'pre',
+            test: /\.js$/,
+            loader: "source-map-loader"
+        }
         ],
 
     },
