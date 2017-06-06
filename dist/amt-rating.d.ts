@@ -43,7 +43,7 @@ export interface AskmethatRatingOptions {
      */
     inputName: string;
 }
-export default class AskmethatRating {
+export declare class AskmethatRating {
     private parentElement;
     private pValue;
     private styleSheet;

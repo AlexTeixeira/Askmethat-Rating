@@ -11,18 +11,12 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 before_script:
   - npm install -g bower
-  - npm install -g gulp
-  - npm install -g tsd
+  - npm install -g webpack
   - npm install -g typescript
-  - npm install -g gulp-typescript
-  - npm install -g gulp-sass
-  - npm install -g gulp-coveralls
   - npm install -g mocha
   - npm install -g karma
   - npm install -g karma-chrome-launcher
   - npm install -g karma-mocha
-  - npm install -g karma-typescript
-  - npm install -g karma-typescript-preprocessor
   - npm install -g chai
-  - gulp ts-compile
-  - gulp sass
+  - npm build:prod
+  - npm test

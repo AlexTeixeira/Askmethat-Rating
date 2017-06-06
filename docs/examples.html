@@ -67,7 +67,7 @@
             <pre class="prettyprint">
               <code class="language-javascript">
                 var div = document.getElementById("myBasicRatingDefault");
-                var amtRating = new AskmethatRating(div, 2);              
+                var amtRating = new Askmethat.AskmethatRating(div, 2);              
                 </code>
             </pre>
           </div>
@@ -98,12 +98,12 @@
                     minRating: 1,
                     maxRating: 5,
                     readonly: false,
-                    step: AskmethatRatingSteps["OnePerOneStep"],
+                    step: Askmethat.AskmethatRatingSteps["OnePerOneStep"],
                     inputName: "MyRating"                                    
                     };
 
                 var div = document.getElementById("myBasicRating");
-                var amtRating = new AskmethatRating(div, 2, options);              
+                var amtRating = new Askmethat.AskmethatRating(div, 2, options);              
                 </code>
             </pre>
           </div>
@@ -136,13 +136,13 @@
                       minRating: 1,
                       maxRating: 5,
                       readonly: false,
-                      step: AskmethatRatingSteps["OnePerOneStep"]
+                      step: Askmethat.AskmethatRatingSteps["OnePerOneStep"]
                       };
 
                   var div = document.getElementById("myFirstMultipleRating");
-                  var amtRating1 = new AskmethatRating(div, 1, options);   
+                  var amtRating1 = new Askmethat.AskmethatRating(div, 1, options);   
                   var div = document.getElementById("mySecondMultipleRating");
-                  var amtRating2 = new AskmethatRating(div, 2, options);               
+                  var amtRating2 = new Askmethat.AskmethatRating(div, 2, options);               
                 </code>
             </pre>
           </div>
@@ -180,9 +180,9 @@
                   };
 
                   var div = document.getElementById("myFontAwesomeRating");
-                  var amtRating1 = new AskmethatRating(div, 1, options1);   
+                  var amtRating1 = new Askmethat.AskmethatRating(div, 1, options1);   
                   var div = document.getElementById("myOcticonRating");
-                  var amtRating2 = new AskmethatRating(div, 1, options2);               
+                  var amtRating2 = new Askmethat.AskmethatRating(div, 1, options2);               
                 </code>
             </pre>
           </div>
@@ -217,27 +217,27 @@
               <code class="language-javascript">
                   var decimalOpt = 
                   {
-                    step: AskmethatRatingSteps["DecimalStep"]
+                    step: Askmethat.AskmethatRatingSteps["DecimalStep"]
                   };
 
                   var halpOpt = 
                   {
-                    step: AskmethatRatingSteps["HalfStep"]
+                    step: Askmethat.AskmethatRatingSteps["HalfStep"]
                   };
 
                   var FullOpt = 
                   {
-                    step: AskmethatRatingSteps["OnePerOneStep"]
+                    step: Askmethat.AskmethatRatingSteps["OnePerOneStep"]
                   };
 
                   var div = document.getElementById("minimalStepRating");
-                  var amtRating1 = new AskmethatRating(div, 1.8, decimalOpt);   
+                  var amtRating1 = new Askmethat.AskmethatRating(div, 1.8, decimalOpt);   
 
                   var div = document.getElementById("halfStepRating");
-                  var amtRating2 = new AskmethatRating(div, 1.5, halpOpt);    
+                  var amtRating2 = new Askmethat.AskmethatRating(div, 1.5, halpOpt);    
 
                   var div = document.getElementById("fullStepRating");
-                  var amtRating3 = new AskmethatRating(div, 1, FullOpt);             
+                  var amtRating3 = new Askmethat.AskmethatRating(div, 1, FullOpt);             
                 </code>
             </pre>
           </div>
@@ -269,7 +269,7 @@
                 };
 
                 var div = document.getElementById("readonlyRating");
-                var amtRating = new AskmethatRating(div, 3.2, options);              
+                var amtRating = new Askmethat.AskmethatRating(div, 3.2, options);              
                 </code>
             </pre>
           </div>
@@ -306,11 +306,11 @@
                     minRating: 0,
                     maxRating: 5,
                     readonly: false,
-                    step: AskmethatRatingSteps["HalfStep"]                                       
+                    step: Askmethat.AskmethatRatingSteps["HalfStep"]                                       
                     };
 
                 var changeDiv = document.getElementById("changeEventRating");
-                var amtRating = new AskmethatRating(div, 0, options);
+                var amtRating = new Askmethat.AskmethatRating(div, 0, options);
 
                  changeDiv.addEventListener("amt-change", function(e){
                   document.getElementById("changeEventRatingValue").innerHTML = e.detail;
@@ -343,7 +343,7 @@
 
   //default options
   var div = document.getElementById("myBasicRatingDefault");
-  var defaultAmtRating = new AskmethatRating(div, 2);
+  var defaultAmtRating = new Askmethat.AskmethatRating(div, 2);
 
 
   //Basic Example
@@ -354,20 +354,20 @@
         minRating: 1,
         maxRating: 5,
         readonly: false,
-        step: AskmethatRatingSteps["OnePerOneStep"],
+        step: Askmethat.AskmethatRatingSteps["OnePerOneStep"],
         inputName: "MyRating"                                               
       };
 
 
     var div = document.getElementById("myBasicRating");
-    var amtRating = new AskmethatRating(div, 1, options);
+    var amtRating = new Askmethat.AskmethatRating(div, 1, options);
 
 
   //Multiple Example
     var div = document.getElementById("myFirstMultipleRating");
-    var amtRating1 = new AskmethatRating(div, 1, options);   
+    var amtRating1 = new Askmethat.AskmethatRating(div, 1, options);   
     var div = document.getElementById("mySecondMultipleRating");
-    var amtRating2 = new AskmethatRating(div, 2, options);   
+    var amtRating2 = new Askmethat.AskmethatRating(div, 2, options);   
 
 //Fonts example
      var options1 = {
@@ -379,34 +379,34 @@
      };
 
     var div = document.getElementById("myFontAwesomeRating");
-    var amtRating1 = new AskmethatRating(div, 1, options1);   
+    var amtRating1 = new Askmethat.AskmethatRating(div, 1, options1);   
     var div = document.getElementById("myOcticonRating");
-    var amtRating2 = new AskmethatRating(div, 1, options2);      
+    var amtRating2 = new Askmethat.AskmethatRating(div, 1, options2);      
 
     //step example
     var decimalOpt = 
     {
-      step: AskmethatRatingSteps["DecimalStep"]
+      step: Askmethat.AskmethatRatingSteps["DecimalStep"]
     };
 
      var halpOpt = 
      {
-      step: AskmethatRatingSteps["HalfStep"]
+      step: Askmethat.AskmethatRatingSteps["HalfStep"]
      };
 
      var FullOpt = 
      {
-      step: AskmethatRatingSteps["OnePerOneStep"]
+      step: Askmethat.AskmethatRatingSteps["OnePerOneStep"]
      };
 
     var div = document.getElementById("minimalStepRating");
-    var amtRating1 = new AskmethatRating(div, 1.8, decimalOpt);   
+    var amtRating1 = new Askmethat.AskmethatRating(div, 1.8, decimalOpt);   
 
     var div = document.getElementById("halfStepRating");
-    var amtRating2 = new AskmethatRating(div, 1.5, halpOpt);    
+    var amtRating2 = new Askmethat.AskmethatRating(div, 1.5, halpOpt);    
 
     var div = document.getElementById("fullStepRating");
-    var amtRating3 = new AskmethatRating(div, 1, FullOpt);
+    var amtRating3 = new Askmethat.AskmethatRating(div, 1, FullOpt);
 
 
     //on change example
@@ -416,7 +416,7 @@
      };
 
       var div = document.getElementById("readonlyRating");
-      var amtRating = new AskmethatRating(div, 3.2, options);  
+      var amtRating = new Askmethat.AskmethatRating(div, 3.2, options);  
 
 
       var options = {
@@ -426,11 +426,11 @@
         minRating: 0,
         maxRating: 5,
         readonly: false,
-        step: AskmethatRatingSteps["HalfStep"]                                       
+        step: Askmethat.AskmethatRatingSteps["HalfStep"]                                       
        };
 
        var changeDiv = document.getElementById("changeEventRating");
-       var amtRating = new AskmethatRating(changeDiv, 0, options);
+       var amtRating = new Askmethat.AskmethatRating(changeDiv, 0, options);
 
        changeDiv.addEventListener("amt-change", function(e){
            document.getElementById("changeEventRatingValue").innerHTML = e.detail;

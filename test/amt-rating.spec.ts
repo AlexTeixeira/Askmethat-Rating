@@ -1,10 +1,6 @@
-/// <reference path="../typings/globals/mocha/index.d.ts" />
-/// <reference path="../typings/modules/chai/index.d.ts" />
-
-
 import { expect, assert } from 'chai';
 
-import AskmethatRating from '../src/ts/amt-rating';
+import {AskmethatRating} from '../src/ts/amt-rating';
 
 
 class TestPrivates extends AskmethatRating{
@@ -248,7 +244,7 @@ describe('#display', () => {
 
         var event;
         event = document.createEvent('MouseEvents');
-        event.initMouseEvent('mousemove', true, true, window);
+        event.initEvent('mousemove', true, true);
         span.dispatchEvent(event);
 
         expect(span.classList.contains("amt-active")).to.be.true;
@@ -333,7 +329,7 @@ describe('#display', () => {
 
         var event;
         event = document.createEvent('MouseEvents');
-        event.initMouseEvent('mousemove', true, true, window);
+        event.initEvent('mousemove', true, true);
         span.dispatchEvent(event);
 
         expect(span.classList.contains("amt-active")).to.be.true;

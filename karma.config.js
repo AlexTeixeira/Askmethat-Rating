@@ -1,13 +1,27 @@
-module.exports = function(config) {
+var webpackConfig = require('./webpack.config.js');
+var path = require('path');
+
+module.exports = function (config) {
     var configuration = {
         browserNoActivityTimeout: 30000,
-        frameworks: ["mocha", "karma-typescript", "chai"],
+        frameworks: ["mocha", "chai"],
         files: [
-            { pattern: "src/**/*.ts" },
-            { pattern: "test/*.ts" }
+            "test/*.spec.ts"
         ],
         preprocessors: {
-            "**/*.ts": ["karma-typescript"], 
+            "test/*.spec.ts": ["webpack", "coverage"],
+        },
+        mime: {
+            'text/x-typescript': ['ts']
+        },
+        webpack: webpackConfig[0],
+        webpackMiddleware: {
+            stats: "errors-only"
+        },
+        coverageReporter:{
+            reporters:[
+                { type: 'lcov', subdir: '' },
+            ]
         },
         customLaunchers: {
             Chrome_travis_ci: {
@@ -15,12 +29,14 @@ module.exports = function(config) {
                 flags: ['--no-sandbox']
             }
         },
-        reporters: ["progress", "karma-typescript", "coverage"],
+        reporters: ["progress", "coverage"],
         browsers: ["Chrome"],
-        coverageReporter: {
-            type : 'lcov',
-            dir : 'coverage'
-        }   
+        plugins: [
+            require('karma-webpack'),
+            require("karma-mocha"),
+            require("karma-chai"),
+            require("karma-coverage"),
+            require("karma-chrome-launcher")]
     };
 
     if (process.env.TRAVIS) {

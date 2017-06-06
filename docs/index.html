@@ -42,7 +42,8 @@
       <div class="container-fluid">
         <div class="jumbotron text-center">
           <h1 class="display-3">Askmethat-Rating</h1>
-          <p class="lead">This is a simple JavaScript plugin powered by Typescript. This plugin allows you to create custom rating using any font from Font-Awesome or Glyphicon.</p>
+          <p class="lead">
+            This is a simple JavaScript plugin powered by Typescript. This plugin allows you to create custom rating using any font from Font-Awesome or Glyphicon.</p>
           <hr class="my-4">
           <p>You can customize the style of the rating and customize the way to work with it !</p>
           <p class="lead">
@@ -96,6 +97,7 @@
         <div class="row">
           <div class="col-12">
             <h1>Usage</h1>
+            <h6>Askmethat-Rating is encapsuled in the Askmethat module</h6>
             <hr>
           </div>
 
@@ -122,12 +124,12 @@
                   minRating: 1,
                   maxRating: 5,
                   readonly: false,
-                  step: AskmethatRatingSteps["OnePerOneStep"],
+                  step: Askmethat.AskmethatRatingSteps["OnePerOneStep"],
                   inputName: "AskmethatRating"
                 };
 
               var div = document.getElementById("myRating");
-              var amcRating = new AskmethatRating(div, 2, options);              
+              var amcRating = new Askmethat.AskmethatRating(div, 2, options);              
               </code>
             </pre>
            
