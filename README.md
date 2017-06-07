@@ -13,7 +13,7 @@
 
 ## Synopsis
 
-This plugins was made to allow user to create any rating with any font ( like font-awesome or glyphicons).
+This plugins was made to allow user to create any rating with any font ( like Font-Awesome or Glyphicons).
 
 ## Current implementation
 
@@ -38,10 +38,10 @@ For now, you could download the repository and use gulp to generate the JavaScri
 
 1. Restore the node package using [Yarn](https://yarnpkg.com/)
 
-2. Run this gulp task
+2. Run this npm task for production generation
 
 ```javascript
-gulp default
+npm run build:prod
 ```
 3. The javascript and css is in the folder dist.
 
@@ -86,14 +86,14 @@ This example show you how to create a rating starting with default options and u
 
 ```javascript
 var container = document.getElementById("amtRating");
-var amt = new AskmethatRating(container); //if you don't give options to the class, it will use the default ones
+var amt = new Askmethat.AskmethatRating(container); //if you don't give options to the class, it will use the default ones
 ```
 
 If you want to set a custom default value, call the plugin with this additional parameter
 
 ```javascript
 var container = document.getElementById("amtRating");
-var amt = new AskmethatRating(container, 2); //if you don't give options to the class, it will use the default ones
+var amt = new Askmethat.AskmethatRating(container, 2); //if you don't give options to the class, it will use the default ones
 ```
 
 ### Get the rating value
@@ -104,7 +104,7 @@ This method retrieve the selected rating value.
 
 ```javascript
 var container = document.getElementById("amtRating");
-var amt = new AskmethatRating(container); //if you don't give options to the class, it will use the default ones
+var amt = new Askmethat.AskmethatRating(container); //if you don't give options to the class, it will use the default ones
 console.log(amt.value)
 ```
 
@@ -113,9 +113,9 @@ console.log(amt.value)
 You just need to give the identifier or a class to get the value.
 
 ```javascript
-console.log(AskmethatRating.value("#amtRating")); 
+console.log(Askmethat.AskmethatRating.value("#amtRating")); 
 ```
 
 ## Contributors
 
-Anyone who want to contribute to the plugin can do it.
+Anyone who want to contribute to the plugin according to MIT License.

@@ -46,7 +46,7 @@ export interface AskmethatRatingOptions {
     inputName: string
 
 }
-export default class AskmethatRating {
+export class AskmethatRating {
     //this is the container to create the ratings element
     private parentElement: HTMLDivElement;
     private pValue : number;

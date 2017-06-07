@@ -1,13 +1,21 @@
-module.exports = function(config) {
+var webpackConfig = require('./webpack.test.js');
+
+module.exports = function (config) {
     var configuration = {
+        basePath: './',
         browserNoActivityTimeout: 30000,
-        frameworks: ["mocha", "karma-typescript", "chai"],
+        frameworks: ["mocha", "chai", "karma-typescript"],
         files: [
-            { pattern: "src/**/*.ts" },
-            { pattern: "test/*.ts" }
+            "test/amt-rating.spec.ts",
+            "src/ts/amt-rating.ts"
         ],
         preprocessors: {
-            "**/*.ts": ["karma-typescript"], 
+            'src/ts/amt-rating.ts': ['karma-typescript', "sourcemap", "coverage"],
+            "test/amt-rating.spec.ts": ['karma-typescript', "sourcemap"]
+        },
+        webpack: webpackConfig,
+        webpackMiddleware: {
+            stats: "errors-only"
         },
         customLaunchers: {
             Chrome_travis_ci: {
@@ -15,12 +23,31 @@ module.exports = function(config) {
                 flags: ['--no-sandbox']
             }
         },
-        reporters: ["progress", "karma-typescript", "coverage"],
-        browsers: ["Chrome"],
+        reporters: ["progress", 'coverage', "karma-typescript"],
         coverageReporter: {
-            type : 'lcov',
-            dir : 'coverage'
-        }   
+            dir: 'coverage',
+            subdir: '.',
+            reporters: [
+                { type: 'html', dir: 'coverage/html' },
+                { type: 'lcov', dir: 'coverage/' }]
+        },
+        browsers: ["Chrome"],
+        port: 9876,
+        colors: true,
+        logLevel: config.LOG_INFO,
+        autoWatch: true,
+        singleRun: true,
+        concurrency: Infinity,
+        plugins: [
+            require("karma-mocha"),
+            require("karma-chai"),
+            require("karma-webpack"),
+            require("karma-coverage"),
+            require("karma-chrome-launcher"),
+            require("karma-sourcemap-loader"),
+            require("istanbul-instrumenter-loader"),
+            require("karma-typescript")
+        ]
     };
 
     if (process.env.TRAVIS) {

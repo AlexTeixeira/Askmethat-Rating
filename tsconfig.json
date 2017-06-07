@@ -1,19 +1,23 @@
 {
-	"compilerOptions": {
-		"target": "es5",
-		"noImplicitAny": true,
+    "compilerOptions": {
+        "target": "es5",
+        "noImplicitAny": false,
         "removeComments": false,
         "preserveConstEnums": true,
-        "sourceMap": true,
+        "inlineSourceMap": true,
+        "sourceMap": false,
         "declaration": true,
-        "outDir": "./lib",
-        "lib": [
-            "dom",
-            "es5"
-        ]
-	},
-    
+        "module": "amd",
+        "outDir": "",
+        "baseUrl": "."
+    },
     "include": [
         "src/ts/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "jspm_packages",
+        "bower_components",
+        "**/*.spec.ts"
     ]
 }
