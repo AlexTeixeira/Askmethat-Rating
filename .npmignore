@@ -11,6 +11,8 @@ test/
 *.yml
 gulpfile.json
 karma.config.js
+webpack.config.js
+webpack.test.js
 *.json
 *log
 *.lock
