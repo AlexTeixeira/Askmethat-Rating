@@ -1,10 +1,6 @@
 language: node_js
 node_js:
 - '6.9'
-branches:
-  only:
-  - develop
-  - master
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
@@ -29,6 +25,6 @@ deploy:
   provider: npm
   on:
     tags: true
-    branch: master
+    all_branches: true
   api_key:
     secure: lrrbE2TyMRqAZCFSjoX5nn9dXkemxgvVJZo+I1jhQjR8k+d7DE8rL9PIpdCNLAYmsJoXxSRxYLlf5SkN7mZftMqBDoHojtWX0JSxhV2O2R+fAkU8uLWqfJf9FCoUMMhUJHsdoxroOVAnUBTIB5OZGzZWCPX/TBkT4hMKhrGTGKHunAnZgpjLzDfaMz7NeU5aSt1hZ6Z55lQCM3gfdBnRF4CGaFLtY/b1Azd25JweYAf/HKCGYZx3enlZVIQI27XpdNN4xQiEtWYbNzrUZv4qWjoBPrA2zEeWy8fwsd0CTr3PtZapRpRXCOf+9vmJAsxZvbBRgTutzCR6ijCVAr4/BKIc+oMNYlju7MZdxv3BfLw2U4p0iJvk1HPid+FgLiZ/xAC455zhpihwujV2jnx0KAulH0IlkaIZqFkGxmWCp1P6GvPgpwC3hEPc1oyOoHNyjkEesttscmC8dGV5sgQ2k2g3xwBby1yugsHxUg5VD0kVPfIuFTDXxAfzGILO0HBdi2+erDjufMAcd1S42oA324aBaRDI5OskecZJz5EwzCercN1MUX0sGhcWo0R53WcfzYQtixz4Yhzd1jBz2WsmyWgwOQXbcTqFYI5K7zCLLcLg4QaTJYwYpGqz6UrVMmTi44Q6tVZs/W7WLQq9wBjX7LtdLW6bS7KBgXVARoSWO3o=
