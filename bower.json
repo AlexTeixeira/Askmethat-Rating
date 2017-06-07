@@ -19,7 +19,7 @@
     "glyphicon"
   ],
   "license": "MIT",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "devDependencies": {
     "arr-flatten": "^1.0.1",
     "chai": "^3.5.0",
@@ -55,10 +55,15 @@
     "package.json",
     "typings.json",
     "tsconfig.json",
-    "./*.yml",
+    "*.yml",
     "gulpfile.js",
     "karma.config.js",
-    "yarn.lock"
+    "yarn.lock",
+    "webpack.config.js",
+    "webpack.test.js",
+    ".npmignore",
+    ".gitignore",
+    ".vscode"
   ],
   "main": "dist/"
 }
