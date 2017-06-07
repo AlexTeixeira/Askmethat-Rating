@@ -8,7 +8,6 @@ before_install:
 - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 before_script:
-- npm install -g bower
 - npm install -g webpack
 - npm install -g typescript
 - npm install -g mocha
