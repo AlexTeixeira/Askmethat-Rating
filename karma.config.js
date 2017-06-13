@@ -28,7 +28,6 @@ module.exports = function (config) {
             dir: 'coverage',
             subdir: '.',
             reporters: [
-                { type: 'html', dir: 'coverage/html' },
                 { type: 'lcov', dir: 'coverage/' }]
         },
         browsers: ["Chrome"],
