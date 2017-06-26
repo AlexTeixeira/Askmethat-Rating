@@ -152,42 +152,42 @@ export class AskmethatRating {
     public render(value: number = this._defaultOptions.minRating) {
         this.parentElement.innerHTML = '';
         for (let i = 1; i <= this._defaultOptions.maxRating; i++) {
-            let spanUnder = document.createElement("span");
             let spanOuter = document.createElement("span");
+            let spanUnder = document.createElement("span");
             
-            spanOuter.className = this._defaultOptions.fontClass;
-            spanOuter.className += " amt-rating-elem amt-rating-under amt-rating";
+            spanUnder.className = this._defaultOptions.fontClass;
+            spanUnder.className += " amt-rating-elem amt-rating-under amt-rating";
 
-            spanOuter.setAttribute("data-rating", i.toString());
-            spanOuter.style.color = this._defaultOptions.backgroundColor;
+            spanUnder.setAttribute("data-rating", i.toString());
+            spanUnder.style.color = this._defaultOptions.backgroundColor;
 
             //configure outer
-            spanUnder.className += this._defaultOptions.fontClass;
-            spanUnder.className += " amt-rating-under am-rating";
-            spanUnder.style.color = this._defaultOptions.hoverColor;
-            spanUnder.style.width = "0%";
+            spanOuter.className += this._defaultOptions.fontClass;
+            spanOuter.className += " amt-rating-under am-rating";
+            spanOuter.style.color = this._defaultOptions.hoverColor;
+            spanOuter.style.width = "0%";
 
             //all span before minRating should be direclty active
              if (i <= value) {
-                if(!spanOuter.classList.contains("amt-active")){
-                    spanOuter.className += " amt-active";
+                if(!spanUnder.classList.contains("amt-active")){
+                    spanUnder.className += " amt-active";
                 }
 
-                spanUnder.style.width = "100%";    
+                spanOuter.style.width = "100%";    
 
                 if(i === value)            
-                    spanOuter.className += " amt-selected";      
+                    spanUnder.className += " amt-selected";      
              } else{
                 
                 if(Number(value.toFixed(1)) >= (i - 1) && Number(value.toFixed(1)) < i && (value % 1) !== 0 ){
-                    spanOuter.className += " amt-active amt-selected";
+                    spanUnder.className += " amt-active amt-selected";
                     var m = Number((value % 1).toFixed(1));
-                    spanUnder.style.width = (m * 100) + "%";
+                    spanOuter.style.width = (m * 100) + "%";
 
                 } else{
-                    spanOuter.style.color = this._defaultOptions.backgroundColor;
-                    spanOuter.classList.remove("amt-active");
-                    spanUnder.style.width = "0%";  
+                    spanUnder.style.color = this._defaultOptions.backgroundColor;
+                    spanUnder.classList.remove("amt-active");
+                    spanOuter.style.width = "0%";  
                 }
             }
             
@@ -198,14 +198,12 @@ export class AskmethatRating {
             //if is not readonly, activate events
             if(!this._defaultOptions.readonly){
                 //define events
-                spanOuter.addEventListener("click",this.ratingClick);
-                spanOuter.addEventListener("mousemove",this.mouseMove);
+                spanUnder.addEventListener("click",this.ratingClick);
+                spanUnder.addEventListener("mousemove",this.mouseMove);
             }
             
-            spanOuter.appendChild(spanUnder);
-            this.parentElement.appendChild(spanOuter);
-
-           
+            spanUnder.appendChild(spanOuter);
+            this.parentElement.appendChild(spanUnder);          
         }
         
         //create input type number

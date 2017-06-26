@@ -21,11 +21,11 @@
   "main": "dist/amt-rating.js",
   "types": "dist/amt-rating.d.ts",
   "license": "MIT",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "devDependencies": {
     "@types/chai": "^4.0.0",
     "@types/mocha": "^2.2.41",
-    "chai": "^3.5.0",
+    "chai": "^4.0.2",
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",
@@ -44,18 +44,16 @@
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
     "ts-loader": "^2.1.0",
-    "typescript": "^2.1.4",
+    "typescript": "^2.3.4",
     "webpack": "^2.6.1"
   },
-  "dependencies": {
-    "remove": "^0.1.5"
-  },
+  "dependencies": {},
   "scripts": {
     "build:watch": "webpack -watch",
     "build:dev": "webpack",
     "build:staging": "webpack -p",
     "build:prod": "npm run build:dev | npm run build:staging",
     "test": "karma start karma.config.js --single-run",
-    "coveralls" : "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   }
 }

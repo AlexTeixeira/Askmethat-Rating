@@ -336,6 +336,36 @@ describe('#display', () => {
       
     });
 
+
+    it("expecting no event if disabled or not is set to input", () =>{
+        var input = div.querySelector("input[type='hidden']");
+        input.setAttribute("disabled", "disabled");
+
+        window.setTimeout(() =>{
+          let val = 3;
+          var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
+          span.click();
+
+
+          //expect to not bet changed
+          expect(subject.value).to.be.equal(1);
+
+          input.removeAttribute("disabled");
+
+           window.setTimeout(() =>{
+            span.click();
+
+
+            //expect to not bet changed
+            expect(subject.value).to.be.equal(val - 1);
+
+           },1500);
+
+        }, 1500);
+
+       
+
+    });
   });
 
   describe("Private functions", () =>{

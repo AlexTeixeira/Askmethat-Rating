@@ -59,6 +59,21 @@ npm i askmethat-rating
 bower install askmethat-rating
 ```
 
+## TypeScript
+
+My plugin have now is Definition file in the [DefinitelyTyped repository](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/askmethat-rating)
+
+You can install it with this npm command 
+
+```javascript
+  npm install -D @types/askmethat-rating
+```
+
+Or this yarn one : 
+
+```javascript
+  yarn add -D @types/askmethat-rating
+```
 
 ## Example
 
@@ -72,9 +87,10 @@ var options = {
         hoverColor: "#ffff66", //This is the color shown when a rating is  "active"
         fontClass: "fa fa-star", //This is the font class you wan to use
         minRating: 1, //This is the minimum rating you want to be active
-        maxRating: 5 //this is the maximum of rating you can have,
-        readonly: false // disable all events if is true,
-        step : 0 // change the step on mouse over
+        maxRating: 5, //this is the maximum of rating you can have,
+        readonly: false, // disable all events if is true,
+        step : 0 // change the step on mouse over,
+        inputName : "AskmethatRating" // name for the generated input
       
       };
 ```
