@@ -10,7 +10,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let extractSass = new ExtractTextPlugin({
     filename: (!prod) ? '[name].css' : '[name].min.css',
-    disable: (!prod)
 });
 
 
@@ -85,7 +84,7 @@ module.exports = [{
                 use: [{
                     loader: "css-loader",
                     options: {
-                        minimize: (prod) ? true : true,
+                        minimize: (prod) ? true : false,
                         sourceMap: (prod) ? false : true
                     }
                 },
@@ -96,8 +95,6 @@ module.exports = [{
                     }
                 }
                 ],
-                // use style-loader in development
-                //fallback: "style-loader"
             })
         }]
     },

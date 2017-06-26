@@ -21,7 +21,7 @@
   "main": "dist/amt-rating.js",
   "types": "dist/amt-rating.d.ts",
   "license": "MIT",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "devDependencies": {
     "@types/chai": "^4.0.0",
     "@types/mocha": "^2.2.41",
@@ -47,9 +47,7 @@
     "typescript": "^2.3.4",
     "webpack": "^2.6.1"
   },
-  "dependencies": {
-    "remove": "^0.1.5"
-  },
+  "dependencies": {},
   "scripts": {
     "build:watch": "webpack -watch",
     "build:dev": "webpack",
