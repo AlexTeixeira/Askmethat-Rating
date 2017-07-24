@@ -21,7 +21,7 @@
   "main": "dist/amt-rating.js",
   "types": "dist/amt-rating.d.ts",
   "license": "MIT",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "devDependencies": {
     "@types/chai": "^4.0.1",
     "@types/mocha": "^2.2.41",
