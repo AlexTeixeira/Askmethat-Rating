@@ -14,7 +14,7 @@ before_install:
 - rm google-chrome*.deb
 
 before_script:
-- npm install -g webpack
+- npm install webpack
 - npm install -g typescript
 - npm install -g mocha
 - npm install -g karma
