@@ -70,7 +70,7 @@ export class AskmethatRating {
      */
 
     set value(value:number) {
-        if(value < this._defaultOptions.minRating)
+        if(value < this.defaultOptions.minRating)
             throw Error("New value cannot be less than min rating value");
         this.pValue = value;
 
@@ -138,7 +138,7 @@ export class AskmethatRating {
         
         this.mouseMove = this.onMouseMove.bind(this);
         this.ratingClick = this.onRatingClick.bind(this);
-        this.pValue = defaultValue;
+        this.value = defaultValue;
 
 
         this.render(defaultValue);
@@ -151,22 +151,22 @@ export class AskmethatRating {
      * 
      * @param value this is the default value set when the plugin is rendered, by default IAskmethatRatingOptions.minRating
      */
-    public render(value: number = this._defaultOptions.minRating) {
+    public render(value: number = this.defaultOptions.minRating) {
         this.parentElement.innerHTML = '';
-        for (let i = 1; i <= this._defaultOptions.maxRating; i++) {
+        for (let i = 1; i <= this.defaultOptions.maxRating; i++) {
             let spanOuter = document.createElement("span");
             let spanUnder = document.createElement("span");
             
-            spanUnder.className = this._defaultOptions.fontClass;
+            spanUnder.className = this.defaultOptions.fontClass;
             spanUnder.className += " amt-rating-elem amt-rating-under amt-rating";
 
             spanUnder.setAttribute("data-rating", i.toString());
-            spanUnder.style.color = this._defaultOptions.backgroundColor;
+            spanUnder.style.color = this.defaultOptions.backgroundColor;
 
             //configure outer
-            spanOuter.className += this._defaultOptions.fontClass;
+            spanOuter.className += this.defaultOptions.fontClass;
             spanOuter.className += " amt-rating-under am-rating";
-            spanOuter.style.color = this._defaultOptions.hoverColor;
+            spanOuter.style.color = this.defaultOptions.hoverColor;
             spanOuter.style.width = "0%";
 
             //all span before minRating should be direclty active
@@ -187,18 +187,16 @@ export class AskmethatRating {
                     spanOuter.style.width = (m * 100) + "%";
 
                 } else{
-                    spanUnder.style.color = this._defaultOptions.backgroundColor;
+                    spanUnder.style.color = this.defaultOptions.backgroundColor;
                     spanUnder.classList.remove("amt-active");
                     spanOuter.style.width = "0%";  
                 }
             }
-            
-
             //set default value
             this.pValue = value;
 
             //if is not readonly, activate events
-            if(!this._defaultOptions.readonly){
+            if(!this.defaultOptions.readonly){
                 //define events
                 spanUnder.addEventListener("click",this.ratingClick);
                 spanUnder.addEventListener("mousemove",this.mouseMove);
@@ -211,8 +209,8 @@ export class AskmethatRating {
         //create input type number
         var numberInput = <HTMLInputElement>document.createElement("input");
         numberInput.setAttribute("type", "hidden");
-        numberInput.setAttribute("value",this.pValue.toString());
-        numberInput.setAttribute("name", this._defaultOptions.inputName);
+        numberInput.setAttribute("value",this.value.toString());
+        numberInput.setAttribute("name", this.defaultOptions.inputName);
         this.parentElement.appendChild(numberInput);
 
         this.mutationEvent();
@@ -230,7 +228,7 @@ export class AskmethatRating {
         var data = Number(span.getAttribute("data-rating"));
         var value = (data - 1) + Number((parseInt(underSpan.style.width,10) * 0.01).toFixed(1));
 
-        if(value < this._defaultOptions.minRating){
+        if(value < this.defaultOptions.minRating){
             return;
         }
 
@@ -239,7 +237,7 @@ export class AskmethatRating {
             this.parentElement.querySelector(".amt-selected").classList.remove("amt-selected");
         }
       
-        this.pValue = value;
+        this.value = value;
 
         //set selected if is not 0
         if(this.value != 0)
@@ -252,7 +250,7 @@ export class AskmethatRating {
 
         //update input
         var input = <HTMLInputElement>this.parentElement.getElementsByTagName("input")[0];
-        input.value = this.pValue.toString();
+        input.value = this.value.toString();
     }
 
     /**
@@ -311,9 +309,9 @@ export class AskmethatRating {
     */
     protected setOrUnsetActive(value: number){
         //delete hover color only if amt-selected is not present into the current span
-        for(let i = 1; i <= this._defaultOptions.maxRating; i++){
+        for(let i = 1; i <= this.defaultOptions.maxRating; i++){
             //keep min rating 
-            if(i < this._defaultOptions.minRating){
+            if(i < this.defaultOptions.minRating){
                 continue;
             }
             var span = <HTMLSpanElement> this.parentElement.querySelector(".amt-rating-elem[data-rating='"+i+"']");
@@ -333,7 +331,7 @@ export class AskmethatRating {
                     underSpan.style.width = (m * 100) + "%";
 
                 } else{
-                    span.style.color = this._defaultOptions.backgroundColor;
+                    span.style.color = this.defaultOptions.backgroundColor;
                     span.classList.remove("amt-active");
                     underSpan.style.width = "0%";  
                 }
@@ -349,28 +347,7 @@ export class AskmethatRating {
         let target : HTMLInputElement = <HTMLInputElement>this.parentElement.querySelector("input");
 
         // create an observer instance
-       var observer = new MutationObserver((mutations : MutationRecord[]) => {
-            mutations.forEach((mutation) => {
-                if(mutation.attributeName === "disabled"){
-                    var target : HTMLElement = <HTMLElement>mutation.target;
-                    var hasDisabled = target.hasAttribute("disabled")
-                    var spanOuters = this.parentElement.querySelectorAll(".amt-rating-elem");
-
-                    if(hasDisabled){
-                        for(var i=0;i < spanOuters.length; i++){
-                            spanOuters[i].removeEventListener("click", this.ratingClick);
-                            spanOuters[i].removeEventListener("mousemove", this.mouseMove);                    
-                        }                     
-                    } else {
-                        for(var i=0;i < spanOuters.length; i++){
-                            spanOuters[i].addEventListener("click", this.ratingClick);
-                            spanOuters[i].addEventListener("mousemove", this.mouseMove);             
-                        }
-                    }
-
-                } 
-            });
-        });
+       var observer = new MutationObserver((mutations : MutationRecord[]) => { this.mutationDisableEvent(mutations); });
 
         // configuration of the observer:
         var config = { attributes: true, childList: true, characterData: true };
@@ -378,6 +355,37 @@ export class AskmethatRating {
         // pass in the target node, as well as the observer options
         observer.observe(target, config);
     }
+
+    /**
+     * This is fired by mutation observer when an attribute changed in the hidden input
+     * Is protected to have some unit tests
+     * 
+     * @param mutations list of mutations record
+     */
+    protected mutationDisableEvent(mutations : MutationRecord[]){
+        mutations.forEach((mutation) => {
+            if(mutation.attributeName === "disabled"){
+                var target : HTMLElement = <HTMLElement>mutation.target;
+                var hasDisabled = target.hasAttribute("disabled")
+                var spanOuters = this.parentElement.querySelectorAll(".amt-rating-elem");
+
+                if(hasDisabled){
+                    for(var i=0;i < spanOuters.length; i++){
+                        spanOuters[i].removeEventListener("click", this.ratingClick);
+                        spanOuters[i].removeEventListener("mousemove", this.mouseMove);    
+                        this.defaultOptions.readonly = true;                
+                    }                     
+                } else {
+                    for(var i=0;i < spanOuters.length; i++){
+                        spanOuters[i].addEventListener("click", this.ratingClick);
+                        spanOuters[i].addEventListener("mousemove", this.mouseMove);          
+                        this.defaultOptions.readonly = false;                 
+                    }
+                }
+            } 
+        });
+    }
+
     /**
     * @function static method to retrieve with identifier the value 
     * @param  {string} identifier: string container identifier

@@ -122,6 +122,13 @@ export declare class AskmethatRating {
      */
     private mutationEvent();
     /**
+     * This is fired by mutation observer when an attribute changed in the hidden input
+     * Is protected to have some unit tests
+     *
+     * @param mutations list of mutations record
+     */
+    protected mutationDisableEvent(mutations: MutationRecord[]): void;
+    /**
     * @function static method to retrieve with identifier the value
     * @param  {string} identifier: string container identifier
     * @return {number} current rating
