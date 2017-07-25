@@ -11,7 +11,9 @@
 
 ### package information:
 [![Bower version](https://badge.fury.io/bo/askmethat-rating.svg)](https://github.com/AlexTeixeira/Askmethat-Rating)
+<br/>
 [![NPM](https://nodei.co/npm/askmethat-rating.png?compact=true)](https://nodei.co/npm/askmethat-rating/)
+<br/>
 [![NPM](https://nodei.co/npm-dl/askmethat-rating.png)](https://nodei.co/npm/askmethat-rating/)
 
 ## Synopsis
