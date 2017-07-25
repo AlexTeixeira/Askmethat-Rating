@@ -11,6 +11,9 @@
 [![npm version](https://badge.fury.io/js/askmethat-rating.svg)](https://www.npmjs.com/package/askmethat-rating)
 [![Bower version](https://badge.fury.io/bo/askmethat-rating.svg)](https://github.com/AlexTeixeira/Askmethat-Rating)
 
+### package information:
+[![npm](https://img.shields.io/npm/dt/express.svg)](https://www.npmjs.com/package/askmethat-rating)
+
 ## Synopsis
 
 This plugins was made to allow user to create any rating with any font ( like Font-Awesome or Glyphicons).
