@@ -16,13 +16,15 @@ before_install:
 before_script:
 - npm install webpack
 - npm install extract-text-webpack-plugin
-- npm install -g typescript
-- npm install -g mocha
-- npm install -g karma
-- npm install -g karma-chrome-launcher
-- npm install -g karma-mocha
-- npm install -g chai
-- npm install -g coveralls
+- npm install css-loader
+- npm install typescript
+- npm install ts-loader
+- npm install mocha
+- npm install karma
+- npm install karma-chrome-launcher
+- npm install karma-mocha
+- npm install chai
+- npm install coveralls
 - npm run build:prod
 after_success:
 - npm run coveralls
