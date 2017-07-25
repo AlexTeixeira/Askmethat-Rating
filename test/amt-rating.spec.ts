@@ -15,6 +15,10 @@ class TestPrivates extends AskmethatRating{
   public testSetorUnset(value: number){
     return this.setOrUnsetActive(value);
   }
+
+  public testMutationDisableEvent(mutations: MutationRecord[]){
+    return this.mutationDisableEvent(mutations);
+  }
 }
 
 
@@ -251,7 +255,8 @@ describe('#display', () => {
 
      });
 
-     /*it("Trigger a mouseleave in specific rating element", () => {
+  
+     it("Trigger a mouseleave in specific rating element", () => {
         let val = 4;
         var span = <HTMLSpanElement> div.querySelector(".amt-rating-elem[data-rating='"+ val +"']");
 
@@ -265,7 +270,7 @@ describe('#display', () => {
 
         expect(span.classList.contains("amt-active")).to.be.false;
 
-     });*/
+     });
 
      it("Do not trigger event if readonly is true", () => {
         var options = {
@@ -362,9 +367,6 @@ describe('#display', () => {
            },1500);
 
         }, 1500);
-
-       
-
     });
   });
 
@@ -405,7 +407,7 @@ describe('#display', () => {
         });
 
         it("test selected for an decimal value", () => {
-        var options = {
+          var options = {
             backgroundColor : "#ccc",
             hoverColor: "#eee",
             fontClass: "fa fa-class",
@@ -421,6 +423,69 @@ describe('#display', () => {
           var span = <HTMLSpanElement> div.children[2];
 
           expect(span.classList.contains("amt-active")).to.be.true;
+        });
+
+        it("test input set to disabled", () => {
+          var options = {
+            backgroundColor : "#ccc",
+            hoverColor: "#eee",
+            fontClass: "fa fa-class",
+            minRating: 1,
+            maxRating: 5,
+            readonly: true,
+            step: 1
+          };
+
+           var input = div.querySelector("input[type='hidden']");
+           input.setAttribute("disabled", "disabled");
+
+           var amtTest = new TestPrivates(div,2,options);
+           var mutation : MutationRecord = {
+               target: input,
+               attributeName: "disabled",
+               oldValue : "",
+               addedNodes: undefined,
+               attributeNamespace: undefined,
+               nextSibling: undefined,
+               previousSibling: undefined,
+               removedNodes: undefined,
+               type: undefined
+           };
+          
+           amtTest.testMutationDisableEvent([mutation]);
+           expect(amtTest.defaultOptions.readonly).to.be.true;
+
+        });
+
+        it("test input set to enable", () => {
+          var options = {
+            backgroundColor : "#ccc",
+            hoverColor: "#eee",
+            fontClass: "fa fa-class",
+            minRating: 1,
+            maxRating: 5,
+            readonly: true,
+            step: 1
+          };
+
+           var input = div.querySelector("input[type='hidden']");
+
+           var amtTest = new TestPrivates(div,2,options);
+           var mutation : MutationRecord = {
+               target: input,
+               attributeName: "disabled",
+               oldValue : "",
+               addedNodes: undefined,
+               attributeNamespace: undefined,
+               nextSibling: undefined,
+               previousSibling: undefined,
+               removedNodes: undefined,
+               type: undefined
+           };
+          
+           amtTest.testMutationDisableEvent([mutation]);
+           expect(amtTest.defaultOptions.readonly).to.be.false;
+
         });
 
   });
