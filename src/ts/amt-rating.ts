@@ -138,7 +138,7 @@ export class AskmethatRating {
         
         this.mouseMove = this.onMouseMove.bind(this);
         this.ratingClick = this.onRatingClick.bind(this);
-        this.pValue = this.defaultOptions.minRating;
+        this.pValue = defaultValue;
 
 
         this.render(defaultValue);
