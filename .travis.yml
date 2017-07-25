@@ -17,6 +17,8 @@ before_script:
 - npm install webpack
 - npm install extract-text-webpack-plugin
 - npm install css-loader
+- npm install sass-loader
+- npm install source-map-loader
 - npm install typescript
 - npm install ts-loader
 - npm install mocha
