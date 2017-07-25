@@ -98,8 +98,17 @@ export class AskmethatRating {
      * 
      * @return  options based on @type AskmethatRatingOptions
      */
-    get defaultOptions() : any {
+    get defaultOptions() : AskmethatRatingOptions {
         return this._defaultOptions;
+    }
+
+    /**
+     * @function set the default option for the rating
+     * 
+     * @return  options based on @type AskmethatRatingOptions
+     */
+    set defaultOptions(value: AskmethatRatingOptions) {
+       (<any>Object).assign(this._defaultOptions, value)
     }
 
     /**
@@ -114,29 +123,22 @@ export class AskmethatRating {
 
         //override default options
         if(options){
-            this._defaultOptions.hoverColor = options.hoverColor != null ? options.hoverColor :  this._defaultOptions.hoverColor;
-            this._defaultOptions.backgroundColor = options.backgroundColor != null ? options.backgroundColor :  this._defaultOptions.backgroundColor;
-            this._defaultOptions.minRating = options.minRating != null ? options.minRating :  this._defaultOptions.minRating;
-            this._defaultOptions.maxRating = options.maxRating != null ? options.maxRating :  this._defaultOptions.maxRating;
-            this._defaultOptions.fontClass = options.fontClass != null ? options.fontClass :  this._defaultOptions.fontClass;
-            this._defaultOptions.readonly = options.readonly != null ? options.readonly :  this._defaultOptions.readonly;
-            this._defaultOptions.step = options.step != null ? options.step :  this._defaultOptions.step;
-            this._defaultOptions.inputName=  options.inputName != null ? options.inputName :  this._defaultOptions.inputName;
-             
+            this.defaultOptions = options;             
         }
 
-        if(this._defaultOptions.minRating > defaultValue){
+        if(this.defaultOptions.minRating > defaultValue){
             throw new Error("Default value should be higher than minRating options");
         }
 
          //if is not readonly, activate events
-         if(!this._defaultOptions.readonly){
+         if(!this.defaultOptions.readonly){
             //define events
             this.parentElement.addEventListener("mouseleave",(e) => this.onMouseLeave(e));
         }
         
         this.mouseMove = this.onMouseMove.bind(this);
         this.ratingClick = this.onRatingClick.bind(this);
+        this.pValue = defaultValue;
 
 
         this.render(defaultValue);

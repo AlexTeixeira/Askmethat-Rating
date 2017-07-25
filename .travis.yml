@@ -1,21 +1,41 @@
+dist: trusty
 language: node_js
 node_js:
-- '6.9'
+- "6.9"
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 before_install:
-- export CHROME_BIN=chromium-browser
-- export DISPLAY=:99.0
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0 
 - sh -e /etc/init.d/xvfb start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
 - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+- rm google-chrome*.deb
 
 before_script:
-- npm install -g webpack
-- npm install -g typescript
-- npm install -g mocha
-- npm install -g karma
-- npm install -g karma-chrome-launcher
-- npm install -g karma-mocha
-- npm install -g chai
-- npm install -g coveralls
+- npm install webpack
+- npm install extract-text-webpack-plugin
+- npm install css-loader
+- npm install sass-loader
+- npm install node-sass
+- npm install source-map-loader
+- npm install typescript
+- npm install ts-loader
+- npm install mocha
+- npm install karma
+- npm install karma-chrome-launcher
+- npm install karma-mocha
+- npm install chai
+- npm install coveralls
 - npm run build:prod
 after_success:
 - npm run coveralls
