@@ -18,6 +18,7 @@ before_script:
 - npm install extract-text-webpack-plugin
 - npm install css-loader
 - npm install sass-loader
+- npm install node-sass
 - npm install source-map-loader
 - npm install typescript
 - npm install ts-loader
