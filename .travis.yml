@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 node_js:
 - '6.9'
 before_install:
@@ -9,6 +11,7 @@ before_install:
 - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 - sudo dpkg -i google-chrome*.deb
 - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+- rm google-chrome*.deb
 
 before_script:
 - npm install -g webpack
