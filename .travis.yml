@@ -15,6 +15,7 @@ before_install:
 
 before_script:
 - npm install webpack
+- npm install extract-text-webpack-plugin
 - npm install -g typescript
 - npm install -g mocha
 - npm install -g karma
