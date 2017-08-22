@@ -9,7 +9,7 @@
         "declaration": true,
         "module": "amd",
         "outDir": "",
-        "baseUrl": "."
+        "baseUrl": "./src/ts"
     },
     "include": [
         "src/ts/*.ts"

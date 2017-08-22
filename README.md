@@ -8,8 +8,13 @@
 ### master:
 [![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=master)
-[![npm version](https://badge.fury.io/js/askmethat-rating.svg)](https://www.npmjs.com/package/askmethat-rating)
+
+### package information:
 [![Bower version](https://badge.fury.io/bo/askmethat-rating.svg)](https://github.com/AlexTeixeira/Askmethat-Rating)
+<br/>
+[![NPM](https://nodei.co/npm/askmethat-rating.png?compact=true)](https://nodei.co/npm/askmethat-rating/)
+<br/>
+[![NPM](https://nodei.co/npm-dl/askmethat-rating.png)](https://nodei.co/npm/askmethat-rating/)
 
 ## Synopsis
 
@@ -89,8 +94,14 @@ var options = {
         minRating: 1, //This is the minimum rating you want to be active
         maxRating: 5, //this is the maximum of rating you can have,
         readonly: false, // disable all events if is true,
-        step : 0 // change the step on mouse over,
-        inputName : "AskmethatRating" // name for the generated input
+        step : 0, // change the step on mouse over,
+        inputName : "AskmethatRating", // name for the generated input
+        popover: { //Display a popover if is defined, set rating as readonly
+          color: "#e5e500", // color of rating & progress bar
+          fontClass: "fa fa-star", // font class for rating in popover
+          direction: 1, // direction of popover, top or bottom
+          values : [20,20,20,20,20], // values to display in progress, size should be equals to maxRating
+        } 
       
       };
 ```
@@ -132,6 +143,21 @@ You just need to give the identifier or a class to get the value.
 console.log(Askmethat.AskmethatRating.value("#amtRating")); 
 ```
 
+## How it look 
+
+#### 5 Rating Stars
+
+[![5 Stars](https://image.ibb.co/dA0YhQ/5stars.png)](https://image.ibb.co/dA0YhQ/5stars.png)
+
+#### Statistique Rating
+
+The popover will display some progress bar that represente the percentage of selected rating value
+
+[![Stat Stars](https://image.ibb.co/motEp5/Stat_Stars.png)](https://image.ibb.co/motEp5/Stat_Stars.png)
+
+
 ## Contributors
+
+### Who can contribute ?
 
 Anyone who want to contribute to the plugin according to MIT License.

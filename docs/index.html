@@ -2,6 +2,9 @@
   <head>
     <title>Askmethat Rating</title>
 
+    <link rel="stylesheet" title="amtRatingCss" type="text/css" href="lib/amt-rating.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/amt-rating-popover.min.css">
+    
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
@@ -102,6 +105,12 @@
           </div>
 
           <div class="col-12">
+              <br/>
+                <h4>Without Popover</h1>
+                  <hr/>
+              <br/>               
+            </div>
+          <div class="col-12">
             <h4>HTML</h1>
           </div>
           <div class="col-12">
@@ -134,36 +143,107 @@
             </pre>
            
           </code>
+          <div class="card-block text-center" style="font-size:2em;">
+              <div id="myRating"></div>
+            </div>
         </div>
+        </div>
+
+        <div class="col-12">
+            <br/>
+              <h4>With Popover</h1>
+                <hr/>            
+            <p>
+             The popover will display some progress bar that represente the percentage of selected rating value
+            </p>
+            <br/>           
+          </div>
+        <div class="col-12">
+          <h4>HTML</h1>
+        </div>
+        <div class="col-12">
+          <pre class="prettyprint">
+            <xmp class="language-html">
+                <div id="myRatingPopover"></div>
+            </xmp>
+          </pre>
+        </div>
+        <div class="col-12">
+          <h4>JavaScript</h1>
+        </div>
+        <div class="col-12">
+          <pre class="prettyprint">
+            <code class="language-javascript">
+            var options = {
+                backgroundColor : "#e5e500",
+                hoverColor: "#ffff66",
+                fontClass: "fa fa-star",
+                minRating: 1,
+                maxRating: 5,
+                readonly: false,
+                step: Askmethat.AskmethatRatingSteps["OnePerOneStep"],
+                inputName: "AskmethatRatingPopover",
+                popover: {
+                  color: "#e5e500",
+                  fontClass: "fa fa-star",
+                  direction: 0,
+                  values : [20,20,20,20,20],
+                }    
+              };
+
+            var div = document.getElementById("myRatingPopover");
+            var amcRating = new Askmethat.AskmethatRating(div, 0, options);              
+            </code>
+          </pre>        
+        </code>
+        <div class="card-block text-center" style="font-size:2em;">
+            <div id="myRatingPopover"></div>
+          </div>
+      </div>
       </div>
     </section>
   </body>
 
-
+  <script type="text/javascript" src="lib/amt-rating.min.js"></script>  
  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
 
   <script>
-   /*var options = {
-        backgroundColor : "#e5e500",
-        hoverColor: "#ffff66",
-        fontClass: "fa fa-star",
-        minRating: 1,
-        maxRating: 5,
-        readonly: false,
-        step: 2
-        
-      
-      };
 
+var options = {
+    backgroundColor : "#e5e500",
+    hoverColor: "#ffff66",
+    fontClass: "fa fa-star",
+    minRating: 1,
+    maxRating: 5,
+    readonly: false,
+    step: Askmethat.AskmethatRatingSteps["OnePerOneStep"],
+    inputName: "AskmethatRating"
+  };
 
-    var div = document.getElementById("amc-rating");
-    var amcRating = new AskmethatRating(div, 2, options);
+var div = document.getElementById("myRating");
+var amcRating = new Askmethat.AskmethatRating(div, 2, options); 
 
-    div.addEventListener("amt-change", function(e){
-        console.log(e)
-    });*/
+  var optionsPopover = {
+    backgroundColor : "#e5e500",
+    hoverColor: "#ffff66",
+    fontClass: "fa fa-star",
+    minRating: 0,
+    maxRating: 5,
+    readonly: false,
+    step: Askmethat.AskmethatRatingSteps["OnePerOneStep"],
+    inputName: "AskmethatRatingPopover",
+    popover: {
+      color: "#e5e500",
+      fontClass: "fa fa-star",
+      direction: 0,
+      values : [20,20,20,20,20],
+    }    
+  };
+
+var div = document.getElementById("myRatingPopover");
+var amcRatingPopover = new Askmethat.AskmethatRating(div, 2.5, optionsPopover);          
   </script>
 </html>

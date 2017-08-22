@@ -6,12 +6,17 @@ module.exports = function (config) {
         browserNoActivityTimeout: 30000,
         frameworks: ["mocha", "chai", "karma-typescript"],
         files: [
-            "test/amt-rating.spec.ts",
+            "test/amt-rating-popover.spec.ts",
+            "test/amt-rating.spec.ts",            
+            "src/ts/amt-rating-popover.ts",
             "src/ts/amt-rating.ts"
         ],
         preprocessors: {
+            'src/ts/amt-rating-popover.ts': ['karma-typescript', "sourcemap", "coverage"],            
             'src/ts/amt-rating.ts': ['karma-typescript', "sourcemap", "coverage"],
-            "test/amt-rating.spec.ts": ['karma-typescript', "sourcemap"]
+            "test/amt-rating.spec.ts": ['karma-typescript', "sourcemap"],
+            "test/amt-rating-popover.spec.ts": ['karma-typescript', "sourcemap"]
+            
         },
         webpack: webpackConfig,
         webpackMiddleware: {

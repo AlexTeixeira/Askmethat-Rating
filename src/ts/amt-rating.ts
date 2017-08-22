@@ -1,5 +1,7 @@
 //This enum set the step for the rating
-export enum AskmethatRatingSteps{
+import { AskmethatRatingPopover, AskmethatRatingPopoverOptions }  from "./amt-rating-popover";
+
+export enum AskmethatRatingSteps {
     /**
      * Step 0.1 per 0.1
      */
@@ -31,19 +33,23 @@ export interface AskmethatRatingOptions {
     /**
      * Class to display as rating (FontAwesome or Rating for exemple)
      */
-    fontClass: string,
+    fontClass?: string,
     /**
      * Set the rating to readonly
      */
-    readonly: boolean,
+    readonly?: boolean,
     /** 
     * The stepping for the rating
     */
-    step: AskmethatRatingSteps,
+    step?: AskmethatRatingSteps,
     /**
      * Input name (Default is AskmethatRating)
      */
-    inputName: string
+    inputName?: string,
+    /**
+     * options if popover is set. Put element as readonly
+     */
+    popover?: AskmethatRatingPopoverOptions
 
 }
 export class AskmethatRating {
@@ -140,12 +146,25 @@ export class AskmethatRating {
         this.ratingClick = this.onRatingClick.bind(this);
         this.value = defaultValue;
 
-
         this.render(defaultValue);
-        
 
     }
 
+    /**
+     * Init popover if needed
+     */
+    private initPopover(){
+        if(this.defaultOptions.popover != undefined){
+            if(this.defaultOptions.popover.values.length != this.defaultOptions.maxRating)
+               throw("Popover values do not mitmach with max number of rating elements");
+            
+            this.defaultOptions.readonly = true;
+
+            var popover = new AskmethatRatingPopover(this.defaultOptions.popover);
+            this.parentElement.classList.add("amt-rating-container");
+            this.parentElement.appendChild(popover.render());
+        }
+    }
     /**
      * render a new rating, by default value is the minRating
      * 
@@ -153,6 +172,13 @@ export class AskmethatRating {
      */
     public render(value: number = this.defaultOptions.minRating) {
         this.parentElement.innerHTML = '';
+
+        try{
+            this.initPopover();
+        }catch(e){
+            console.error(e);
+        }
+
         for (let i = 1; i <= this.defaultOptions.maxRating; i++) {
             let spanOuter = document.createElement("span");
             let spanUnder = document.createElement("span");

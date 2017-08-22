@@ -1,3 +1,9 @@
+// Type definitions for askmethat-rating 0.4
+// Project: https://alexteixeira.github.io/Askmethat-Rating/
+// Definitions by: Alexandre Teixeira <https://github.com/AlexTeixeira>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+// TypeScript Version: 2.4.2
+
 export declare enum AskmethatRatingSteps {
     /**
      * Step 0.1 per 0.1
@@ -29,19 +35,23 @@ export interface AskmethatRatingOptions {
     /**
      * Class to display as rating (FontAwesome or Rating for exemple)
      */
-    fontClass: string;
+    fontClass?: string;
     /**
      * Set the rating to readonly
      */
-    readonly: boolean;
+    readonly?: boolean;
     /**
     * The stepping for the rating
     */
-    step: AskmethatRatingSteps;
+    step?: AskmethatRatingSteps;
     /**
      * Input name (Default is AskmethatRating)
      */
-    inputName: string;
+    inputName?: string;
+    /**
+     * options if popover is set. Put element as readonly
+     */
+    popover?: AskmethatRatingPopoverOptions;
 }
 export declare class AskmethatRating {
     private parentElement;
@@ -83,6 +93,10 @@ export declare class AskmethatRating {
      * @param options Default option base on AskmethatRatingOptions type
      */
     constructor(element: HTMLDivElement, defaultValue?: number, options?: any);
+    /**
+     * Init popover if needed
+     */
+    private initPopover();
     /**
      * render a new rating, by default value is the minRating
      *
@@ -134,4 +148,49 @@ export declare class AskmethatRating {
     * @return {number} current rating
     */
     static value(identifier: string): number;
+}
+
+export declare enum AskmethatRatingPopoverDirection {
+    top = 0,
+    bottom = 1,
+}
+export interface AskmethatRatingPopoverOptions {
+    /**
+     * Color used by the font & progress bar inside popover
+     */
+    color: string;
+    /**
+     * fontClass used by the rating element inside popover
+     */
+    fontClass: string;
+    /**
+     * Display popover at bottom or top
+     */
+    direction?: AskmethatRatingPopoverDirection;
+    /**
+     * Array of percentage to display
+     */
+    values: number[];
+}
+export declare class AskmethatRatingPopover {
+    private _options;
+    /**
+     * @function get the default option for the rating
+     *
+     * @return  options based on @type AskmethatRatingOptions
+     */
+    /**
+     * @function set the default option for the rating
+     *
+     * @return  options based on @type AskmethatRatingOptions
+     */
+    options: AskmethatRatingPopoverOptions;
+    /**
+     *
+     */
+    constructor(options: AskmethatRatingPopoverOptions);
+    /**
+     * Return a list of elements
+     */
+    render(): HTMLUListElement;
 }

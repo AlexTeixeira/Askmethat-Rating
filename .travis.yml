@@ -42,6 +42,7 @@ after_success:
 deploy:
   email: askmethatfr@gmail.com
   provider: npm
+  skip_cleanup: true
   on:
     tags: true
     all_branches: true
