@@ -8,8 +8,13 @@
 ### master:
 [![Build Status](https://travis-ci.org/AlexTeixeira/Askmethat-Rating.svg?branch=master)](https://travis-ci.org/AlexTeixeira/Askmethat-Rating)
 [![Coverage Status](https://coveralls.io/repos/github/AlexTeixeira/Askmethat-Rating/badge.svg?branch=master)](https://coveralls.io/github/AlexTeixeira/Askmethat-Rating?branch=master)
-[![npm version](https://badge.fury.io/js/askmethat-rating.svg)](https://www.npmjs.com/package/askmethat-rating)
+
+### package information:
 [![Bower version](https://badge.fury.io/bo/askmethat-rating.svg)](https://github.com/AlexTeixeira/Askmethat-Rating)
+<br/>
+[![NPM](https://nodei.co/npm/askmethat-rating.png?compact=true)](https://nodei.co/npm/askmethat-rating/)
+<br/>
+[![NPM](https://nodei.co/npm-dl/askmethat-rating.png)](https://nodei.co/npm/askmethat-rating/)
 
 ## Synopsis
 
