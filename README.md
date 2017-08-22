@@ -147,13 +147,13 @@ console.log(Askmethat.AskmethatRating.value("#amtRating"));
 
 #### 5 Rating Stars
 
-![alt text](https://ibb.co/bVh2bk)
+[![5 Stars](https://image.ibb.co/dA0YhQ/5stars.png)](https://image.ibb.co/dA0YhQ/5stars.png)
 
 #### Statistique Rating
 
 The popover will display some progress bar that represente the percentage of selected rating value
 
-![alt text](https://ibb.co/i6r0U5)
+[![Stat Stars](https://image.ibb.co/motEp5/Stat_Stars.png)](https://image.ibb.co/motEp5/Stat_Stars.png)
 
 
 ## Contributors
