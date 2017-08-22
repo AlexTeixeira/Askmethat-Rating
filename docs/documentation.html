@@ -51,11 +51,17 @@
       <hr>
     </div>
     <div class="col-12">
+        <br/>        
+      <h3>Rating Options</h3>
+      <br/>     
+    </div>
+    <div class="col-12">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Mandatory</th>            
             <th>Default</th>
           </tr>
         </thead>
@@ -66,6 +72,9 @@
               Displayed background color when the ratings are not <i>hovered/active/selected</i>
             </td> 
             <td>
+              <strong>false</strong>
+            </td>
+            <td>
               <strong>#e5e500</strong>
             </td>         
           </tr>   
@@ -74,6 +83,9 @@
             <td>
               Displayed background color when the ratings are <i>hovered/active/selected</i>
             </td>  
+            <td>
+              <strong>false</strong>
+            </td>
             <td>
               <strong>#ffff66</strong>
             </td>                
@@ -85,6 +97,9 @@
               For example : <i>"fa fa-star"</i>
             </td> 
             <td>
+              <strong>false</strong>
+            </td>
+            <td>
               <strong>fa fa-star</strong>
             </td>          
           </tr>   
@@ -95,6 +110,9 @@
               If the value is one, the user cannot set the rating to <strong>0</strong>
             </td> 
             <td>
+              <strong>false</strong>
+            </td>
+            <td>
               <strong>1</strong>
             </td>      
           </tr>  
@@ -102,6 +120,9 @@
             <td>maxRating</td>
             <td>
               This is the wanted number of rating. Currently this is unlimited
+            </td>
+            <td>
+              <strong>false</strong>
             </td> 
              <td>
               <strong>5</strong>
@@ -112,6 +133,9 @@
             <td>
               Disable all the events. The value can be set manually
             </td> 
+            <td>
+              <strong>false</strong>
+            </td>
              <td>
               <strong>false</strong>
             </td>         
@@ -125,6 +149,9 @@
               <strong>Askmethat.AskmethatRatingSteps["OnePerOneStep"]</strong> is 1 per 1 </br>
 
             </td> 
+            <td>
+              <strong>false</strong>
+            </td>
              <td>
               <strong>Askmethat.AskmethatRatingSteps["DecimalStep"]</strong>
             </td>         
@@ -135,12 +162,99 @@
               Allow to customize the hidden input name in the rating div
               (Set rating to readonly if input is set to disabled)
             </td>
+            <td>
+              <strong>false</strong>
+            </td>
              <td>
               <strong>Askmethat.AskmethatRating</strong>
+            </td>  
+          </tr>   
+          <tr>
+            <td>popover</td>
+             <td>
+              Popover options. If options are defined, the rating will display a popover and set rating to readonly
+            </td>
+            <td>
+              <strong>false</strong>
+            </td>
+             <td>
+              <strong>( see below )</strong>
             </td>  
           </tr>     
         </tbody>
       </table>
+    </div>
+    <div class="col-12">
+        <br/>        
+      <h3>Popover Options</h3>
+      <br/>
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Mandatory</th>            
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>color</td>
+                     <td>
+                      Set color for the progress bar and the rating elements
+                    </td>
+                    <td>
+                      <strong>true</strong>
+                    </td>
+                     <td>
+                      <strong>N/A</strong>
+                    </td>  
+                  </tr>  
+                  <tr>
+                      <td>fontClass</td>
+                       <td>
+                          This is the font class that you want to use with the current rating
+                          For example : "fa fa-star"
+                      </td>
+                      <td>
+                        <strong>true</strong>
+                      </td>
+                       <td>
+                        <strong>N/A</strong>
+                      </td>  
+                    </tr>  
+                    <tr>
+                        <td>direction</td>
+                         <td>
+                            Set direction of popover display <br/>
+                            <i> 0 : Top<i/>
+                            <i> 1 : bottom<i/>                              
+                        </td>
+                        <td>
+                          <strong>false</strong>
+                        </td>
+                         <td>
+                          <strong>1 : bottom</strong>
+                        </td>  
+                      </tr> 
+                      <tr>
+                          <td>values</td>
+                           <td>
+                              Array of int that equals to stats array for each rating elements <br/>
+                              <strong> Array items count should be equals to <u>Rating Options</u>  maxRating</strong><br/>
+                              <i> Examples :  [20,20,20,20,20]<i/>
+                          </td>
+                          <td>
+                            <strong>false</strong>
+                          </td>
+                           <td>
+                            <strong>1 : bottom</strong>
+                          </td>  
+                        </tr>         
+            </tbody>
+        </table>
     </div>
   </div>
    <div class="row">

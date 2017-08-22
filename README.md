@@ -89,8 +89,14 @@ var options = {
         minRating: 1, //This is the minimum rating you want to be active
         maxRating: 5, //this is the maximum of rating you can have,
         readonly: false, // disable all events if is true,
-        step : 0 // change the step on mouse over,
-        inputName : "AskmethatRating" // name for the generated input
+        step : 0, // change the step on mouse over,
+        inputName : "AskmethatRating", // name for the generated input
+        popover: { //Display a popover if is defined, set rating as readonly
+          color: "#e5e500", // color of rating & progress bar
+          fontClass: "fa fa-star", // font class for rating in popover
+          direction: 1, // direction of popover, top or bottom
+          values : [20,20,20,20,20], // values to display in progress, size should be equals to maxRating
+        } 
       
       };
 ```
@@ -132,6 +138,21 @@ You just need to give the identifier or a class to get the value.
 console.log(Askmethat.AskmethatRating.value("#amtRating")); 
 ```
 
+## How it look 
+
+#### 5 Rating Stars
+
+![alt text](https://ibb.co/bVh2bk)
+
+#### Statistique Rating
+
+The popover will display some progress bar that represente the percentage of selected rating value
+
+![alt text](https://ibb.co/i6r0U5)
+
+
 ## Contributors
+
+### Who can contribute ?
 
 Anyone who want to contribute to the plugin according to MIT License.

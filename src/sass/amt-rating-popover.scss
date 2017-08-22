@@ -1,0 +1,92 @@
+$popoverWidthHalf: 130px;
+$popoverLeft: 50%;
+
+.amt-rating-container {
+  position: relative;
+
+  &:focus, &:hover{
+    ul{
+     transform:scale(1);     
+     opacity:1;
+    }
+  }
+
+  ul{
+       list-style:none;
+       position:absolute; 
+       padding: 0 20px 30px 20px !important;
+       color:#09c;
+       background:rgba(250, 250, 250, 1);
+       border-radius:3px;
+       box-shadow:0 0 2px rgba(0,0,0,.8);
+       transition:all .25s;
+       transform:scale(0);
+       opacity:0;
+       z-index: 10;
+       width: calc( #{$popoverWidthHalf} * 2);
+       
+
+
+       &.top{
+        top: -175px;
+        left: calc(#{$popoverLeft} - #{$popoverWidthHalf});
+      }
+
+       &.bottom{
+        top: 35px;
+        left: calc(#{$popoverLeft} - #{$popoverWidthHalf});
+       }
+
+       li{
+        height: 25px;
+      
+
+        .fa{
+          font-size: 16px;
+
+          &.fa-inner{
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+          }
+
+          &.fa-under{
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+          }
+        }
+        .progress {
+          display: inline-grid;
+          vertical-align: middle;
+            height: 20px;
+            width: 150px;
+            position: relative;
+            background: #333; 
+              background: -webkit-linear-gradient(#ccc,#eee);
+              background:    -moz-linear-gradient(#ccc,#eee);
+              background:      -o-linear-gradient(#ccc,#eee);
+              background:         linear-gradient(#ccc,#eee);
+                  box-shadow: 0 1px 0 rgba(255,255,255,.2);   
+          
+          }
+          .progress:before {
+            content: attr(data-label);
+            font-size: 0.8em;
+            position: absolute;
+            text-align: center;
+            color: #000;
+            top: 2px;
+            left: 0;
+            right: 0;
+          }
+          .progress .value {
+            background-color: #7CC3FF;
+            display: inline-block;
+            height: 100%;
+          }
+      }     
+  }     
+}

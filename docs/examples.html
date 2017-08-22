@@ -4,8 +4,10 @@
   <title>Askmethat Rating</title>
 
   <link rel="stylesheet" title="amtRatingCss" type="text/css" href="lib/amt-rating.min.css">
+  <link rel="stylesheet" type="text/css" href="lib/amt-rating-popover.min.css">
+  
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -324,6 +326,54 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12">
+          <h1>Popover</h1>
+          <hr>
+        </div>
+      <!-- sixth examples !-->
+        <div class="col-12">
+          <h4 class="second-title">Display popover</h4>
+          <p>If you want to display rating statistics, you can use the rating popover to display them</p>
+        </div>
+        <div class="card">
+          <div class="card-img-top">
+            <h6 class="code-title">HTML</h6>
+            <pre class="prettyprint">
+              <xmp class="language-html">
+                <div id="popoverRating"></div>
+              </xmp>
+            </pre>
+            <h6 class="code-title">JavaScript</h6>
+            <pre class="prettyprint">
+              <code class="language-javascript">
+                //popover
+                var options = {
+                 backgroundColor : "#e5e500",
+                 hoverColor: "#ffff66",
+                 fontClass: "fa fa-star",
+                 minRating: 0,
+                 maxRating: 5,
+                 readonly: true,
+                 step: Askmethat.AskmethatRatingSteps["HalfStep"],
+                 popover: {
+                   color: "#e5e500",
+                   fontClass: "fa fa-star",
+                   direction: 0,
+                   values : [20,20,20,20,20]
+                 }                                       
+                };
+         
+                var changeDiv = document.getElementById("popoverRating");
+                var amtRating = new Askmethat.AskmethatRating(changeDiv, 0, options);
+                </code>
+            </pre>
+          </div>
+          <div class="card-block text-center" style="font-size:2em;">
+                <div id="popoverRating"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </body>
@@ -434,7 +484,29 @@
 
        changeDiv.addEventListener("amt-change", function(e){
            document.getElementById("changeEventRatingValue").innerHTML = e.detail;
-       });          
+       });       
+       
+       //popover
+       var options = {
+        backgroundColor : "#e5e500",
+        hoverColor: "#ffff66",
+        fontClass: "fa fa-star",
+        minRating: 0,
+        maxRating: 5,
+        readonly: true,
+        step: Askmethat.AskmethatRatingSteps["HalfStep"],
+        popover: {
+          color: "#e5e500",
+          fontClass: "fa fa-star",
+          direction: 0,
+          values : [20,20,20,20,20],
+        }                                       
+       };
+
+       var changeDiv = document.getElementById("popoverRating");
+       var amtRating = new Askmethat.AskmethatRating(changeDiv, 0, options);
+
+             
   </script>
 
 </html>

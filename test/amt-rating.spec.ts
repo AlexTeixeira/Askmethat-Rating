@@ -1,5 +1,7 @@
 import { expect, assert } from 'chai';
 
+import {AskmethatRatingPopover} from "../src/ts/amt-rating-popover";
+
 import {AskmethatRating} from '../src/ts/amt-rating';
 
 

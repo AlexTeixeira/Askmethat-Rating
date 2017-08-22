@@ -29,7 +29,6 @@ module.exports = [{
         libraryTarget: 'umd',
         library: 'Askmethat',
         umdNamedDefine: true
-
     },
     watch: watch,
     watchOptions: {
@@ -72,6 +71,7 @@ module.exports = [{
     devtool: "eval-source-map",
     entry: {
         "amt-rating": "./src/sass/amt-rating.scss",
+        "amt-rating-popover": "./src/sass/amt-rating-popover.scss",
     },
     output: {
         path: path.resolve(__dirname, './dist'),
