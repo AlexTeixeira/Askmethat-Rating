@@ -248,7 +248,7 @@ export class AskmethatRating {
     */
     private onRatingClick(event? : Event):void{
         
-        var span = <HTMLSpanElement>event.srcElement;
+        var span = <HTMLSpanElement>event.currentTarget;
         var underSpan = <HTMLSpanElement> span.querySelector(".amt-rating-under");
 
         var data = Number(span.getAttribute("data-rating"));
@@ -300,9 +300,9 @@ export class AskmethatRating {
     * @param  {type} event?: Event {event}
     */
     private onMouseMove(event?: MouseEvent) : void{
-        var current = <HTMLSpanElement>event.srcElement;
+        var current = <HTMLSpanElement>event.currentTarget;
         var data = Number(current.getAttribute("data-rating"));
-        var mousePos =  Number(((event.offsetX /  event.srcElement.clientWidth )* 100).toFixed(0)); 
+        var mousePos =  Number(((event.offsetX / current.offsetWidth )* 100).toFixed(0)); 
         var value = (data - 1) + Number((mousePos * 0.01).toFixed(1));
         value = this.getValueAccordingToStep(value);
 

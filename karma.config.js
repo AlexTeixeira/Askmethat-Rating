@@ -35,7 +35,7 @@ module.exports = function (config) {
             reporters: [
                 { type: 'lcov', dir: 'coverage/' }]
         },
-        browsers: ["Chrome"],
+        browsers: ["Chrome", "Firefox"],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
@@ -48,6 +48,7 @@ module.exports = function (config) {
             require("karma-webpack"),
             require("karma-coverage"),
             require("karma-chrome-launcher"),
+            require("karma-firefox-launcher"),
             require("karma-sourcemap-loader"),
             require("istanbul-instrumenter-loader"),
             require("karma-typescript")
