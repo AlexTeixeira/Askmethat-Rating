@@ -2,7 +2,7 @@
 // Project: https://alexteixeira.github.io/Askmethat-Rating/
 // Definitions by: Alexandre Teixeira <https://github.com/AlexTeixeira>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.4.2
+// TypeScript Version: 2.5.3
 
 export declare enum AskmethatRatingSteps {
     /**
